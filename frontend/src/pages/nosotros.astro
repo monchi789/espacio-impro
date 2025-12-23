@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroNosotros from '../components/nosotros/HeroNosotros.tsx';
+import MisionVision from '../components/nosotros/MisionVision.tsx';
+import NuestraHistoria from '../components/nosotros/NuestraHistoria.tsx';
+import Principios from '../components/nosotros/Principios.tsx';
+import CarouselComunidad from '../components/nosotros/CarouselComunidad.tsx';
+import CTASection from '../components/nosotros/CTASection.tsx';
+import Footer from '../components/layout/Footer.astro';
+import { nosotrosSEO } from '../data/seo.ts';
+---
+
+<Layout
+  title={nosotrosSEO.title}
+  description={nosotrosSEO.description}
+  keywords={nosotrosSEO.keywords}
+  openGraph={nosotrosSEO.openGraph}
+>
+  <HeroNosotros client:only="react" />
+  <MisionVision client:only="react" />
+  <NuestraHistoria client:only="react" />
+  <Principios client:only="react" />
+  <CarouselComunidad client:only="react" />
+  <CTASection client:only="react" />
+  <Footer />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Espacio Impro Cusco",
+    "url": "https://espacioimprocusco.com",
+    "logo": "https://espacioimprocusco.com/logo.png",
+    "sameAs": [
+      "https://www.instagram.com/espacioimpro.cusco"
+    ]
+  }
+  </script>
+</Layout>

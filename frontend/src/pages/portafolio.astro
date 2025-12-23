@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/layout/Footer.astro';
+import PortafolioBento from '../components/portafolio/PortafolioBento.tsx';
+---
+
+<Layout title="Portafolio - Espacio Impro">
+  <PortafolioBento client:only="react" />
+  <Footer />
+</Layout>

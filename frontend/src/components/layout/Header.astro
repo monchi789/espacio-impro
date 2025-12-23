@@ -1,0 +1,168 @@
+---
+import Rocket from "../../assets/icons/rocket.astro";
+
+const navItems = [
+  { name: 'Inicio', href: '/' },
+  { name: 'Nosotros', href: '/nosotros' },
+  { name: 'Galería', href: '/galeria' },
+  // { name: 'Portafolio', href: '/portafolio' },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-gris-50/95 backdrop-blur-sm">
+  <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-24 md:h-28">
+      <!-- Logo -->
+      <div class="shrink-0">
+        <a href="/" class="flex items-center space-x-3">
+          <img src="/logo.png" alt="Espacio Impro Logo" class="w-16 h-16 md:w-20 md:h-20 object-contain" />
+          <span class="text-2xl md:text-3xl font-lovelo text-gris-800">Espacio Impro</span>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex lg:items-center lg:space-x-8">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class="font-inter text-gris-800 hover:text-carmin transition-colors duration-200 font-medium text-base tracking-wide"
+          >
+            {item.name}
+          </a>
+        ))}
+        
+        <!-- Botón Contáctanos con cohete -->
+        <a
+          href="/contactanos"
+          class="contactanos-btn group relative flex items-center gap-2 bg-lavanda hover:bg-lavanda-600 text-white font-inter font-medium text-base px-6 py-3 rounded-full transition-all duration-300 shadow-md hover:shadow-lg"
+        >
+          <span>Contáctanos</span>
+          <Rocket class="w-5 h-5 rocket-icon" />
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="lg:hidden">
+        <button
+          id="mobile-menu-button"
+          type="button"
+          class="inline-flex items-center justify-center p-2 rounded-md text-gris-800 hover:text-carmin hover:bg-gris-100 transition-colors duration-200"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Abrir menú</span>
+          <!-- Hamburger icon -->
+          <svg
+            id="menu-icon"
+            class="block h-6 w-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <!-- Close icon -->
+          <svg
+            id="close-icon"
+            class="hidden h-6 w-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden lg:hidden">
+      <div class="px-2 pt-2 pb-4 space-y-1">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class="block px-3 py-2 rounded-md text-base font-inter font-medium text-gris-800 hover:text-carmin hover:bg-gris-50 transition-colors duration-200"
+          >
+            {item.name}
+          </a>
+        ))}
+        
+        <!-- Botón Contáctanos móvil -->
+        <a
+          href="/contactanos"
+          class="flex items-center gap-2 mx-3 mt-3 bg-lavanda hover:bg-lavanda-600 text-white font-inter font-medium text-base px-4 py-2.5 rounded-full transition-all duration-300 justify-center"
+        >
+          <span>Contáctanos</span>
+          <Rocket class="w-5 h-5 rocket-icon" />
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<style>
+  /* Animación suave constante del cohete */
+  @keyframes rocket-float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-3px);
+    }
+  }
+
+  /* Animación más intensa al hacer hover */
+  @keyframes rocket-fly {
+    0%, 100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+      transform: translate(4px, -5px) rotate(-15deg);
+    }
+    50% {
+      transform: translate(-3px, -8px) rotate(10deg);
+    }
+    75% {
+      transform: translate(3px, -4px) rotate(-12deg);
+    }
+  }
+
+  .contactanos-btn :global(svg) {
+    animation: rocket-float 2s ease-in-out infinite;
+    transition: all 0.3s ease;
+  }
+
+  .contactanos-btn:hover :global(svg) {
+    animation: rocket-fly 0.6s ease-in-out infinite;
+  }
+</style>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  mobileMenuButton?.addEventListener('click', () => {
+    const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+    
+    mobileMenuButton.setAttribute('aria-expanded', (!isExpanded).toString());
+    mobileMenu?.classList.toggle('hidden');
+    menuIcon?.classList.toggle('hidden');
+    closeIcon?.classList.toggle('hidden');
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (event) => {
+    const target = event.target as HTMLElement;
+    if (!target.closest('nav') && !mobileMenu?.classList.contains('hidden')) {
+      mobileMenu?.classList.add('hidden');
+      menuIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+      mobileMenuButton?.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>

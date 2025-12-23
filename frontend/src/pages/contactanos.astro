@@ -1,0 +1,77 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/layout/Footer.astro';
+import ContactoCompleto from '../components/contacto/ContactoCompleto.tsx';
+import FAQ from '../components/home/FAQ.tsx';
+import { contactSEO } from '../data/seo.ts';
+---
+
+<Layout
+  title={contactSEO.title}
+  description={contactSEO.description}
+  keywords={contactSEO.keywords}
+  openGraph={contactSEO.openGraph}
+>
+  <main>
+    <ContactoCompleto client:only="react" />
+    <FAQ client:only="react" />
+  </main>
+
+  <Footer />
+
+  <!-- JSON-LD Organización -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Espacio Impro Cusco",
+    "url": "https://espacioimprocusco.com",
+    "logo": "https://espacioimprocusco.com/logo.png",
+    "sameAs": [
+      "https://www.instagram.com/espacioimpro.cusco"
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Necesito experiencia previa para participar en un taller?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, tenemos talleres desde niveles básicos, así que no es problema puedes aprender. Además, si ya tienes experiencia improvisando también tenemos tallares para que sigas entrenando y descubriendo más."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué diferencia a Espacio Impro de otras escuelas de impro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nuestra mirada es teatral, no solo cómica. Exploramos la improvisación como código interpretativo del teatro. Estamos en constante investigación esto nos permite descubrir más recursos, adquirir nuevas herramientas y profundizar en nuestra improvisación."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuándo es su próxima función?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Para enterarte sobre nuestras siguientes funciones síguenos en IG @espacioimpro.cusco"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo puedo formar parte de la compañía o colaborar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Escríbenos a nuestras redes; te contaremos sobre nuestros shows, festivales o talleres de formación."
+        }
+      }
+    ]
+  }
+  </script>
+</Layout>

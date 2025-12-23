@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import GaleriaMasonry from '../components/galeria/GaleriaMasonry.tsx';
+import Footer from '../components/layout/Footer.astro';
+import { galeriaSEO } from '../data/seo.ts';
+---
+
+<Layout
+  title={galeriaSEO.title}
+  description={galeriaSEO.description}
+  keywords={galeriaSEO.keywords}
+  openGraph={galeriaSEO.openGraph}
+>
+  <main>
+    <h1>Galería</h1>
+    <p>Explora fotos de talleres, funciones y momentos de improvisación teatral en Cusco.</p>
+
+    <GaleriaMasonry client:only="react" />
+  </main>
+
+  <Footer />
+
+  <!-- JSON-LD ImageGallery -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    "name": "Galería Espacio Impro Cusco",
+    "description": "Fotos de talleres, funciones y momentos de improvisación teatral en Cusco.",
+    "url": "https://espacioimprocusco.com/galeria",
+    "associatedMedia": [
+      {
+        "@type": "ImageObject",
+        "contentUrl": "https://espacioimprocusco.com/images/galeria/Foto-50.webp",
+        "license": "https://espacioimprocusco.com",
+        "creator": {
+          "@type": "Organization",
+          "name": "Espacio Impro Cusco"
+        }
+      }
+    ]
+  }
+  </script>
+</Layout>

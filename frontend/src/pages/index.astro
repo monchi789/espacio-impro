@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/home/Hero.tsx';
+import Pilares from '../components/home/Pilares.tsx';
+import CarouselVisual from '../components/home/CarouselVisual.tsx';
+import Manifiesto from '../components/home/Manifiesto.tsx';
+import Metodologia from '../components/home/Metodologia.tsx';
+import ContactSection from '../components/home/ContactSection.tsx';
+import FAQ from '../components/home/FAQ.tsx';
+import Footer from '../components/layout/Footer.astro';
+import { homepageSEO } from '../data/seo.ts';
+---
+
+<Layout
+  title={homepageSEO.title}
+  description={homepageSEO.description}
+  keywords={homepageSEO.keywords}
+  openGraph={homepageSEO.openGraph}
+>
+  <Hero client:only="react" />
+  <Pilares client:only="react" />
+  <CarouselVisual client:only="react" />
+  <Manifiesto client:only="react" />
+  <Metodologia client:only="react" />
+  <ContactSection client:only="react" />
+  <FAQ client:only="react" />
+  <Footer />
+
+  <!-- JSON-LD Organización -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Espacio Impro Cusco",
+    "url": "https://espacioimprocusco.com",
+    "logo": "https://espacioimprocusco.com/logo.png",
+    "sameAs": [
+      "https://www.instagram.com/espacioimpro.cusco"
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD FAQ completo -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Necesito experiencia previa para participar en un taller?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, tenemos talleres desde niveles básicos, así que no es problema puedes aprender. Además, si ya tienes experiencia improvisando también tenemos tallares para que sigas entrenando y descubriendo más."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué diferencia a Espacio Impro de otras escuelas de impro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nuestra mirada es teatral, no solo cómica. Exploramos la improvisación como código interpretativo del teatro. Estamos en constante investigación esto nos permite descubrir más recursos, adquirir nuevas herramientas y profundizar en nuestra improvisación."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuándo es su próxima función?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Para enterarte sobre nuestras siguientes funciones síguenos en IG @espacioimpro.cusco"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo puedo formar parte de la compañía o colaborar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Escríbenos a nuestras redes; te contaremos sobre nuestros shows, festivales o talleres de formación."
+        }
+      }
+    ]
+  }
+  </script>
+</Layout>

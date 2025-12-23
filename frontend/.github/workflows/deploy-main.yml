@@ -1,0 +1,44 @@
+name: Deploy to VPS (espacio-impro)
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            set -e
+
+            echo "🔄 Entrando al directorio del proyecto"
+            cd ~/espacio-impro
+
+            echo "📥 Haciendo pull de la rama main"
+            git pull origin main --no-rebase
+
+            echo "🧹 Limpiando imágenes antiguas"
+            podman images --format "{{.Repository}} {{.ID}} {{.CreatedAt}}" | grep espacio-impro \
+              | sort -rk3 | tail -n +2 | awk '{print $2}' | xargs -r podman rmi -f
+
+            echo "🧹 Limpiando imágenes dangling (<none>)"
+            podman images -f "dangling=true" -q | xargs -r podman rmi -f
+
+            echo "🛑 Deteniendo contenedor anterior"
+            podman-compose stop espacio-impro || true
+
+            echo "⚙️ Construyendo imagen actualizada"
+            podman-compose build espacio-impro
+
+            echo "🚀 Levantando servicio espacio-impro"
+            podman-compose up -d espacio-impro
+
+            echo "✅ Despliegue finalizado correctamente"

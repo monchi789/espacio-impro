@@ -1,0 +1,432 @@
+@import "tailwindcss";
+
+/* ===== FUENTES PERSONALIZADAS ===== */
+
+/* Lovelo - Para encabezados H1, H2 */
+@font-face {
+  font-family: 'Lovelo';
+  src: url('/fonts/Lovelo-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lovelo';
+  src: url('/fonts/Lovelo-LineBold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lovelo';
+  src: url('/fonts/Lovelo-LineLight.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Gliker - Para subtítulos y textos expresivos */
+@font-face {
+  font-family: 'Gliker';
+  src: url('/fonts/gliker-regular.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Inter - Para texto base y UI */
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter_18pt-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter_18pt-LightItalic.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter_18pt-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter_18pt-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter_18pt-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Manrope - Alternativa para texto base */
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope-ExtraLight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== CUSTOM PROPERTIES (CSS Variables) ===== */
+:root {
+  /* Fuentes personalizadas */
+  --font-lovelo: 'Lovelo', sans-serif;
+  --font-gliker: 'Gliker', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  
+  /* Peso por defecto de Lovelo */
+  --font-lovelo-weight: 900;
+
+  /* Colores Lavanda */
+  --color-lavanda: #6c648b;
+  --color-lavanda-50: #f0eff6;
+  --color-lavanda-100: #dcd9ec;
+  --color-lavanda-200: #b8b3d9;
+  --color-lavanda-300: #938dc7;
+  --color-lavanda-400: #6c648b;
+  --color-lavanda-500: #59527a;
+  --color-lavanda-600: #464068;
+  --color-lavanda-700: #322f56;
+  --color-lavanda-800: #1f1d44;
+  --color-lavanda-900: #0d0b33;
+
+  /* Colores Carmín */
+  --color-carmin: #ff657a;
+  --color-carmin-50: #ffeef0;
+  --color-carmin-100: #ffd6db;
+  --color-carmin-200: #ffadb7;
+  --color-carmin-300: #ff8593;
+  --color-carmin-400: #ff657a;
+  --color-carmin-500: #e05467;
+  --color-carmin-600: #c24354;
+  --color-carmin-700: #a53242;
+  --color-carmin-800: #882230;
+  --color-carmin-900: #6b111f;
+
+  /* Colores Dorado */
+  --color-dorado: #fed056;
+  --color-dorado-50: #fff9e5;
+  --color-dorado-100: #fff1c2;
+  --color-dorado-200: #ffe89e;
+  --color-dorado-300: #fedf7a;
+  --color-dorado-400: #fed056;
+  --color-dorado-500: #d9ac40;
+  --color-dorado-600: #b3892a;
+  --color-dorado-700: #8d6614;
+  --color-dorado-800: #674400;
+  --color-dorado-900: #412300;
+
+  /* Colores Acero */
+  --color-acero: #117cb2;
+  --color-acero-50: #e5f4fa;
+  --color-acero-100: #cce9f5;
+  --color-acero-200: #99d3eb;
+  --color-acero-300: #66bde1;
+  --color-acero-400: #33a7d7;
+  --color-acero-500: #117cb2;
+  --color-acero-600: #0f6998;
+  --color-acero-700: #0d577e;
+  --color-acero-800: #0a4564;
+  --color-acero-900: #08334a;
+
+  /* Colores Gris */
+  --color-gris: #2d2d2d;
+  --color-gris-50: #f2f2f2;
+  --color-gris-100: #d9d9d9;
+  --color-gris-200: #bfbfbf;
+  --color-gris-300: #a6a6a6;
+  --color-gris-400: #8c8c8c;
+  --color-gris-500: #737373;
+  --color-gris-600: #595959;
+  --color-gris-700: #404040;
+  --color-gris-800: #2d2d2d;
+  --color-gris-900: #1a1a1a;
+
+  /* Alias para compatibilidad */
+  --color-brand-dark: #2d2d2d;
+  --color-brand-purple: #6c648b;
+  --color-brand-pink: #ff657a;
+  --color-brand-blue: #117cb2;
+  --color-brand-yellow: #fed056;
+}
+
+/* ===== UTILITY CLASSES ===== */
+@layer utilities {
+  /* Font Families */
+  .font-lovelo { font-family: var(--font-lovelo); font-weight: 900; }
+  .font-gliker { font-family: var(--font-gliker); }
+  .font-inter { font-family: var(--font-inter); }
+  .font-heading { font-family: var(--font-lovelo); font-weight: 900; }
+  .font-subheading { font-family: var(--font-gliker); }
+  .font-body { font-family: var(--font-inter); }
+
+  /* Text Colors - Lavanda */
+  .text-lavanda { color: var(--color-lavanda); }
+  .text-lavanda-50 { color: var(--color-lavanda-50); }
+  .text-lavanda-100 { color: var(--color-lavanda-100); }
+  .text-lavanda-200 { color: var(--color-lavanda-200); }
+  .text-lavanda-300 { color: var(--color-lavanda-300); }
+  .text-lavanda-400 { color: var(--color-lavanda-400); }
+  .text-lavanda-500 { color: var(--color-lavanda-500); }
+  .text-lavanda-600 { color: var(--color-lavanda-600); }
+  .text-lavanda-700 { color: var(--color-lavanda-700); }
+  .text-lavanda-800 { color: var(--color-lavanda-800); }
+  .text-lavanda-900 { color: var(--color-lavanda-900); }
+
+  /* Text Colors - Carmín */
+  .text-carmin { color: var(--color-carmin); }
+  .text-carmin-50 { color: var(--color-carmin-50); }
+  .text-carmin-100 { color: var(--color-carmin-100); }
+  .text-carmin-200 { color: var(--color-carmin-200); }
+  .text-carmin-300 { color: var(--color-carmin-300); }
+  .text-carmin-400 { color: var(--color-carmin-400); }
+  .text-carmin-500 { color: var(--color-carmin-500); }
+  .text-carmin-600 { color: var(--color-carmin-600); }
+  .text-carmin-700 { color: var(--color-carmin-700); }
+  .text-carmin-800 { color: var(--color-carmin-800); }
+  .text-carmin-900 { color: var(--color-carmin-900); }
+
+  /* Text Colors - Dorado */
+  .text-dorado { color: var(--color-dorado); }
+  .text-dorado-50 { color: var(--color-dorado-50); }
+  .text-dorado-100 { color: var(--color-dorado-100); }
+  .text-dorado-200 { color: var(--color-dorado-200); }
+  .text-dorado-300 { color: var(--color-dorado-300); }
+  .text-dorado-400 { color: var(--color-dorado-400); }
+  .text-dorado-500 { color: var(--color-dorado-500); }
+  .text-dorado-600 { color: var(--color-dorado-600); }
+  .text-dorado-700 { color: var(--color-dorado-700); }
+  .text-dorado-800 { color: var(--color-dorado-800); }
+  .text-dorado-900 { color: var(--color-dorado-900); }
+
+  /* Text Colors - Acero */
+  .text-acero { color: var(--color-acero); }
+  .text-acero-50 { color: var(--color-acero-50); }
+  .text-acero-100 { color: var(--color-acero-100); }
+  .text-acero-200 { color: var(--color-acero-200); }
+  .text-acero-300 { color: var(--color-acero-300); }
+  .text-acero-400 { color: var(--color-acero-400); }
+  .text-acero-500 { color: var(--color-acero-500); }
+  .text-acero-600 { color: var(--color-acero-600); }
+  .text-acero-700 { color: var(--color-acero-700); }
+  .text-acero-800 { color: var(--color-acero-800); }
+  .text-acero-900 { color: var(--color-acero-900); }
+
+  /* Text Colors - Gris */
+  .text-gris { color: var(--color-gris); }
+  .text-gris-50 { color: var(--color-gris-50); }
+  .text-gris-100 { color: var(--color-gris-100); }
+  .text-gris-200 { color: var(--color-gris-200); }
+  .text-gris-300 { color: var(--color-gris-300); }
+  .text-gris-400 { color: var(--color-gris-400); }
+  .text-gris-500 { color: var(--color-gris-500); }
+  .text-gris-600 { color: var(--color-gris-600); }
+  .text-gris-700 { color: var(--color-gris-700); }
+  .text-gris-800 { color: var(--color-gris-800); }
+  .text-gris-900 { color: var(--color-gris-900); }
+
+  /* Background Colors - Lavanda */
+  .bg-lavanda { background-color: var(--color-lavanda); }
+  .bg-lavanda-50 { background-color: var(--color-lavanda-50); }
+  .bg-lavanda-100 { background-color: var(--color-lavanda-100); }
+  .bg-lavanda-200 { background-color: var(--color-lavanda-200); }
+  .bg-lavanda-300 { background-color: var(--color-lavanda-300); }
+  .bg-lavanda-400 { background-color: var(--color-lavanda-400); }
+  .bg-lavanda-500 { background-color: var(--color-lavanda-500); }
+  .bg-lavanda-600 { background-color: var(--color-lavanda-600); }
+  .bg-lavanda-700 { background-color: var(--color-lavanda-700); }
+  .bg-lavanda-800 { background-color: var(--color-lavanda-800); }
+  .bg-lavanda-900 { background-color: var(--color-lavanda-900); }
+
+  /* Background Colors - Carmín */
+  .bg-carmin { background-color: var(--color-carmin); }
+  .bg-carmin-50 { background-color: var(--color-carmin-50); }
+  .bg-carmin-100 { background-color: var(--color-carmin-100); }
+  .bg-carmin-200 { background-color: var(--color-carmin-200); }
+  .bg-carmin-300 { background-color: var(--color-carmin-300); }
+  .bg-carmin-400 { background-color: var(--color-carmin-400); }
+  .bg-carmin-500 { background-color: var(--color-carmin-500); }
+  .bg-carmin-600 { background-color: var(--color-carmin-600); }
+  .bg-carmin-700 { background-color: var(--color-carmin-700); }
+  .bg-carmin-800 { background-color: var(--color-carmin-800); }
+  .bg-carmin-900 { background-color: var(--color-carmin-900); }
+
+  /* Background Colors - Dorado */
+  .bg-dorado { background-color: var(--color-dorado); }
+  .bg-dorado-50 { background-color: var(--color-dorado-50); }
+  .bg-dorado-100 { background-color: var(--color-dorado-100); }
+  .bg-dorado-200 { background-color: var(--color-dorado-200); }
+  .bg-dorado-300 { background-color: var(--color-dorado-300); }
+  .bg-dorado-400 { background-color: var(--color-dorado-400); }
+  .bg-dorado-500 { background-color: var(--color-dorado-500); }
+  .bg-dorado-600 { background-color: var(--color-dorado-600); }
+  .bg-dorado-700 { background-color: var(--color-dorado-700); }
+  .bg-dorado-800 { background-color: var(--color-dorado-800); }
+  .bg-dorado-900 { background-color: var(--color-dorado-900); }
+
+  /* Background Colors - Acero */
+  .bg-acero { background-color: var(--color-acero); }
+  .bg-acero-50 { background-color: var(--color-acero-50); }
+  .bg-acero-100 { background-color: var(--color-acero-100); }
+  .bg-acero-200 { background-color: var(--color-acero-200); }
+  .bg-acero-300 { background-color: var(--color-acero-300); }
+  .bg-acero-400 { background-color: var(--color-acero-400); }
+  .bg-acero-500 { background-color: var(--color-acero-500); }
+  .bg-acero-600 { background-color: var(--color-acero-600); }
+  .bg-acero-700 { background-color: var(--color-acero-700); }
+  .bg-acero-800 { background-color: var(--color-acero-800); }
+  .bg-acero-900 { background-color: var(--color-acero-900); }
+
+  /* Background Colors - Gris */
+  .bg-gris { background-color: var(--color-gris); }
+  .bg-gris-50 { background-color: var(--color-gris-50); }
+  .bg-gris-100 { background-color: var(--color-gris-100); }
+  .bg-gris-200 { background-color: var(--color-gris-200); }
+  .bg-gris-300 { background-color: var(--color-gris-300); }
+  .bg-gris-400 { background-color: var(--color-gris-400); }
+  .bg-gris-500 { background-color: var(--color-gris-500); }
+  .bg-gris-600 { background-color: var(--color-gris-600); }
+  .bg-gris-700 { background-color: var(--color-gris-700); }
+  .bg-gris-800 { background-color: var(--color-gris-800); }
+  .bg-gris-900 { background-color: var(--color-gris-900); }
+
+  /* Hover Text Colors */
+  .hover\:text-carmin:hover { color: var(--color-carmin); }
+  .hover\:text-acero:hover { color: var(--color-acero); }
+  .hover\:text-lavanda:hover { color: var(--color-lavanda); }
+  .hover\:text-dorado:hover { color: var(--color-dorado); }
+
+  /* Hover Background Colors */
+  .hover\:bg-carmin:hover { background-color: var(--color-carmin); }
+  .hover\:bg-acero:hover { background-color: var(--color-acero); }
+  .hover\:bg-lavanda:hover { background-color: var(--color-lavanda); }
+  .hover\:bg-dorado:hover { background-color: var(--color-dorado); }
+
+  /* From/To Colors for Gradients */
+  .from-lavanda { --tw-gradient-from: var(--color-lavanda); }
+  .from-carmin { --tw-gradient-from: var(--color-carmin); }
+  .from-dorado { --tw-gradient-from: var(--color-dorado); }
+  .from-acero { --tw-gradient-from: var(--color-acero); }
+  .from-gris { --tw-gradient-from: var(--color-gris); }
+  
+  .to-lavanda { --tw-gradient-to: var(--color-lavanda); }
+  .to-carmin { --tw-gradient-to: var(--color-carmin); }
+  .to-dorado { --tw-gradient-to: var(--color-dorado); }
+  .to-acero { --tw-gradient-to: var(--color-acero); }
+  .to-gris { --tw-gradient-to: var(--color-gris); }
+
+  /* Alias para compatibilidad */
+  .text-brand-dark { color: var(--color-gris-800); }
+  .text-brand-purple { color: var(--color-lavanda); }
+  .text-accent-pink { color: var(--color-carmin); }
+  .bg-brand-dark { background-color: var(--color-gris-800); }
+  .bg-brand-purple { background-color: var(--color-lavanda); }
+  .bg-accent-pink { background-color: var(--color-carmin); }
+  .bg-accent-blue { background-color: var(--color-acero); }
+  .hover\:text-accent-pink:hover { color: var(--color-carmin); }
+  .hover\:bg-accent-blue:hover { background-color: var(--color-acero); }
+  .from-brand-purple { --tw-gradient-from: var(--color-lavanda); }
+  .to-accent-pink { --tw-gradient-to: var(--color-carmin); }
+
+  /* Typography Sizes */
+  .text-h1 { font-size: 3.5rem; line-height: 1.2; font-weight: 900; }
+  .text-h2 { font-size: 2.5rem; line-height: 1.3; font-weight: 900; }
+  .text-h3 { font-size: 1.875rem; line-height: 1.4; font-weight: 600; }
+  .text-h4 { font-size: 1.5rem; line-height: 1.4; font-weight: 600; }
+  .text-body-lg { font-size: 1.125rem; line-height: 1.6; font-weight: 400; }
+  .text-body { font-size: 1rem; line-height: 1.6; font-weight: 400; }
+  .text-body-sm { font-size: 0.875rem; line-height: 1.5; font-weight: 400; }
+  .text-caption { font-size: 0.75rem; line-height: 1.4; font-weight: 300; }
+}
+
+/* ===== ESTILOS BASE ===== */
+
+body {
+  font-family: var(--font-inter);
+  color: var(--color-gris-800);
+}
+
+h1, h2 {
+  font-family: var(--font-lovelo);
+  font-weight: 900;
+  color: var(--color-gris-800);
+}
+
+h3 {
+  font-family: var(--font-gliker);
+  font-weight: 600;
+  color: var(--color-lavanda);
+}
+
+h4, h5, h6 {
+  font-family: var(--font-inter);
+  font-weight: 600;
+  color: var(--color-gris-800);
+}
