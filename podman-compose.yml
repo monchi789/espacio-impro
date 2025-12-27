@@ -4,7 +4,7 @@ services:
   espacio-impro:
     build:
       context: ./frontend
-      dockerfile: Dockerfile
+      dockerfile: dockerfile
     container_name: espacio-impro-web
     ports:
       - "4321:80"
