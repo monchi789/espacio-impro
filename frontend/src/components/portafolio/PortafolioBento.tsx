@@ -3,60 +3,49 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, MessageCircle, Mail } from 'lucide-react';
+import { shows, type Show } from '../../data/shows';
 
-interface Proyecto {
-  titulo: string;
-  color: string;
-  descripcion: string;
-  imagenes: string[];
-}
+// Paleta de colores para las categorías
+const categoryColors: Record<string, string> = {
+  "OBRAS Y FORMATOS LARGOS IMPROVISADOS": "#117cb2", // azul
+  "ESPECTÁCULOS DE IMPRO CONOCIDOS CON UN TOQUE DE ESPACIO": "#6c648b", // lavanda
+  "FORMATOS AMIGOS (PRESTADOS A ESPACIO IMPRO)": "#fed056", // dorado
+  "OBRAS Y FORMATOS DE INVITADOS": "#ff657a", // carmin
+};
 
-const proyectos: Proyecto[] = [
-  {
-    titulo: "Escenas Improvisadas",
-    color: "#117cb2", // azul
-    descripcion: "Un viaje por las emociones y la espontaneidad donde cada función es única e irrepetible. Nuestros actores crean historias únicas en cada presentación, conectando con el público de manera auténtica y sorprendente. El escenario se transforma en un espacio de posibilidades infinitas donde la creatividad fluye libremente.",
-    imagenes: ['/images/Foto-106.jpg', '/images/Foto-12.jpg', '/images/Foto-123.jpg']
-  },
-  {
-    titulo: "Teatro Comunitario",
-    color: "#6c648b", // lavanda
-    descripcion: "Espacios de encuentro donde la comunidad se reúne para explorar, aprender y crear juntos. El arte como herramienta de transformación social y conexión humana, construyendo vínculos que trascienden el escenario. Cada participante aporta su voz única para tejer historias colectivas llenas de significado.",
-    imagenes: ['/images/Foto-137.jpg', '/images/Foto-14.jpg', '/images/Foto-161.jpg']
-  },
-  {
-    titulo: "Workshops Intensivos",
-    color: "#fed056", // dorado
-    descripcion: "Talleres de formación donde profundizamos en técnicas de improvisación, expresión corporal y juego escénico. Experiencias transformadoras que van más allá del teatro, explorando la creatividad como herramienta de autoconocimiento. Un espacio seguro para arriesgar, experimentar y descubrir nuevas facetas de nuestra expresión artística.",
-    imagenes: ['/images/Foto-23.jpg', '/images/Foto-27.jpg', '/images/Foto-3.jpg']
-  },
-  {
-    titulo: "Presentaciones Especiales",
-    color: "#ff657a", // carmin
-    descripcion: "Shows únicos diseñados para eventos corporativos, festivales y celebraciones especiales. Adaptamos nuestra propuesta a cada contexto manteniendo la esencia de la improvisación y el juego teatral. Cada presentación es una experiencia memorable que sorprende y emociona al público, creando momentos de conexión auténtica.",
-    imagenes: ['/images/Foto-37.jpg', '/images/Foto-6.jpg', '/images/Foto-7.jpg']
-  },
-  {
-    titulo: "Exploración Escénica",
-    color: "#117cb2", // azul
-    descripcion: "Investigación constante de nuevas formas de expresión teatral y performativa. Fusionamos técnicas tradicionales con propuestas contemporáneas para crear experiencias innovadoras que desafían los límites del teatro. Un laboratorio de creatividad donde todo es posible y cada experimento nos acerca a nuevas formas de contar historias.",
-    imagenes: ['/images/sin título-4269.jpg', '/images/sin título-4295.jpg', '/images/sin título-4311.jpg']
-  },
-  {
-    titulo: "Formación Continua",
-    color: "#6c648b", // lavanda
-    descripcion: "Programas de desarrollo artístico para todos los niveles de experiencia. Desde principiantes hasta profesionales, cada persona encuentra su espacio para crecer y explorar su potencial creativo. Acompañamos procesos de largo aliento donde la improvisación se convierte en una forma de vida, una manera de estar presente y conectar con el mundo.",
-    imagenes: ['/images/sin título-4330.jpg', '/images/Foto-13.jpg', '/images/Foto-161.jpg']
-  },
-  {
-    titulo: "Experiencias Colectivas",
-    color: "#fed056", // dorado
-    descripcion: "Creamos espacios donde el teatro se convierte en un ritual de encuentro y celebración. Performances participativas que borran la línea entre escenario y público, donde todos somos co-creadores de la experiencia. El arte como puente para construir comunidad y generar momentos de conexión profunda entre las personas.",
-    imagenes: ['/images/Foto-7.jpg', '/images/sin título-4311.jpg', '/images/Foto-27.jpg']
-  }
-];
+// Nombres más cortos para los botones de filtro
+const categoryShortNames: Record<string, string> = {
+  "OBRAS Y FORMATOS LARGOS IMPROVISADOS": "Obras Largas",
+  "ESPECTÁCULOS DE IMPRO CONOCIDOS CON UN TOQUE DE ESPACIO": "Espectáculos",
+  "FORMATOS AMIGOS (PRESTADOS A ESPACIO IMPRO)": "Formatos Amigos",
+  "OBRAS Y FORMATOS DE INVITADOS": "Invitados"
+};
 
 export default function PortafolioBento() {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  // Agrupar shows por categoría
+  const showsByCategory = shows.reduce((acc, show) => {
+    if (!acc[show.category]) {
+      acc[show.category] = [];
+    }
+    acc[show.category].push(show);
+    return acc;
+  }, {} as Record<string, Show[]>);
+
+  // Ordenar categorías
+  const categoryOrder = [
+    "OBRAS Y FORMATOS LARGOS IMPROVISADOS",
+    "ESPECTÁCULOS DE IMPRO CONOCIDOS CON UN TOQUE DE ESPACIO",
+    "FORMATOS AMIGOS (PRESTADOS A ESPACIO IMPRO)",
+    "OBRAS Y FORMATOS DE INVITADOS"
+  ];
+
+  // Determinar qué categorías mostrar
+  const categoriesToShow = selectedCategory 
+    ? [selectedCategory]
+    : categoryOrder;
+
   return (
     <>
       <section className="min-h-screen bg-gris-50 pt-32 md:pt-40 pb-20">
@@ -72,19 +61,124 @@ export default function PortafolioBento() {
               className="font-lovelo text-4xl md:text-5xl lg:text-6xl mb-4"
               style={{ color: '#117cb2' }}
             >
-              PORTAFOLIO
+              NUESTRO PORTAFOLIO
             </h1>
             <p className="font-gliker text-xl md:text-2xl text-gris-700 italic">
               Nuestros proyectos y experiencias
             </p>
           </motion.div>
 
-          {/* Grid Bento 2 columnas */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-            {proyectos.map((proyecto, index) => (
-              <ProyectoCard key={index} proyecto={proyecto} index={index} />
+          {/* Filtro de categorías */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mb-12 flex flex-wrap gap-3 justify-center"
+          >
+            {/* Botón "Ver Todo" */}
+            <motion.button
+              onClick={() => setSelectedCategory(null)}
+              className={`px-6 py-3 rounded-full font-gliker text-sm md:text-base transition-all duration-300 ${
+                selectedCategory === null
+                  ? 'bg-acero text-white shadow-lg scale-105'
+                  : 'bg-white text-gris-700 border-2 border-acero hover:bg-acero hover:text-white'
+              }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Ver Todo
+            </motion.button>
+
+            {/* Botones de categorías */}
+            {categoryOrder.map((category, idx) => (
+              <motion.button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: idx * 0.05 }}
+                className={`px-6 py-3 rounded-full font-gliker text-sm md:text-base transition-all duration-300 ${
+                  selectedCategory === category
+                    ? 'text-white shadow-lg scale-105'
+                    : 'bg-white text-gris-700 border-2 hover:shadow-md'
+                }`}
+                style={
+                  selectedCategory === category
+                    ? {
+                        backgroundColor: categoryColors[category],
+                        borderColor: categoryColors[category],
+                      }
+                    : {
+                        borderColor: categoryColors[category],
+                        color: categoryColors[category],
+                      }
+                }
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {categoryShortNames[category]}
+              </motion.button>
             ))}
-          </div>
+          </motion.div>
+
+          {/* Categorías */}
+          <AnimatePresence mode="wait">
+            {categoriesToShow.map((category, categoryIndex) => {
+              if (!showsByCategory[category]) return null;
+
+              return (
+                <motion.div
+                  key={category}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -30 }}
+                  viewport={{ once: false, amount: 0.1 }}
+                  transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
+                  className="mb-20"
+                >
+                  {/* Título de la categoría */}
+                  {!selectedCategory && (
+                    <motion.h2
+                      className="font-lovelo text-2xl md:text-3xl mb-8 pb-4"
+                      style={{ 
+                        color: categoryColors[category] || '#117cb2',
+                        borderBottom: `3px solid ${categoryColors[category] || '#117cb2'}`
+                      }}
+                    >
+                      {category}
+                    </motion.h2>
+                  )}
+
+                  {selectedCategory && (
+                    <motion.h2
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.4 }}
+                      className="font-lovelo text-2xl md:text-3xl mb-8 pb-4"
+                      style={{ 
+                        color: categoryColors[category] || '#117cb2',
+                        borderBottom: `3px solid ${categoryColors[category] || '#117cb2'}`
+                      }}
+                    >
+                      {category}
+                    </motion.h2>
+                  )}
+
+                  {/* Grid de shows */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {showsByCategory[category].map((show, showIndex) => (
+                      <ShowCard 
+                        key={show.title}
+                        show={show} 
+                        color={categoryColors[category] || '#117cb2'}
+                        index={showIndex}
+                      />
+                    ))}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
         </div>
       </section>
 
@@ -171,44 +265,50 @@ export default function PortafolioBento() {
   );
 }
 
-interface ProyectoCardProps {
-  proyecto: Proyecto;
+interface ShowCardProps {
+  show: Show;
+  color: string;
   index: number;
 }
 
-function ProyectoCard({ proyecto, index }: ProyectoCardProps) {
+function ShowCard({ show, color, index }: ShowCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isCarouselActive, setIsCarouselActive] = useState(false);
 
-  // Auto-advance carousel cuando está en hover
+  // Auto-advance carousel siempre está activo
   useEffect(() => {
-    if (!isCarouselActive) return;
-
     const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % proyecto.imagenes.length);
-    }, 2000); // Cambio más rápido: 2 segundos
+      setCurrentImageIndex((prev) => (prev + 1) % show.images.length);
+    }, 3000);
 
     return () => clearInterval(interval);
-  }, [isCarouselActive, proyecto.imagenes.length]);
+  }, [show.images.length]);
 
   const nextImage = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setIsCarouselActive(false); // Pausar auto-advance
-    setCurrentImageIndex((prev) => (prev + 1) % proyecto.imagenes.length);
-    // Reactivar después de 5 segundos
-    setTimeout(() => setIsCarouselActive(true), 5000);
+    setCurrentImageIndex((prev) => (prev + 1) % show.images.length);
   };
 
   const prevImage = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setIsCarouselActive(false); // Pausar auto-advance
-    setCurrentImageIndex((prev) => (prev - 1 + proyecto.imagenes.length) % proyecto.imagenes.length);
-    // Reactivar después de 5 segundos
-    setTimeout(() => setIsCarouselActive(true), 5000);
+    setCurrentImageIndex((prev) => (prev - 1 + show.images.length) % show.images.length);
   };
+
+  // Información adicional que se muestra
+  const getAdditionalInfo = () => {
+    const info = [];
+    if (show.director) info.push(`Dir: ${show.director}`);
+    if (show.author) info.push(`Autor: ${show.author}`);
+    if (show.cast) info.push(`Elenco: ${show.cast}`);
+    if (show.original_format) info.push(`Formato original: ${show.original_format}`);
+    if (show.original_idea) info.push(`Idea original: ${show.original_idea}`);
+    if (show.note) info.push(`${show.note}`);
+    return info;
+  };
+
+  const additionalInfo = getAdditionalInfo();
 
   return (
     <motion.div
@@ -219,64 +319,114 @@ function ProyectoCard({ proyecto, index }: ProyectoCardProps) {
       className="relative bg-white rounded-2xl overflow-hidden shadow-lg group"
       onMouseEnter={() => {
         setIsHovered(true);
-        setIsCarouselActive(true);
       }}
       onMouseLeave={() => {
         setIsHovered(false);
-        setIsCarouselActive(false);
         setCurrentImageIndex(0);
       }}
     >
       {/* Imagen / Carousel */}
-      <div className="relative h-96 md:h-112 overflow-hidden">
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={currentImageIndex}
-            src={proyecto.imagenes[currentImageIndex]}
-            alt={`${proyecto.titulo} - ${currentImageIndex + 1}`}
-            className="w-full h-full object-cover"
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.7, ease: "easeInOut" }}
-            loading="lazy"
-          />
-        </AnimatePresence>
-
-        {/* Indicador de imágenes en la parte inferior */}
-        {proyecto.imagenes.length > 1 && (
-          <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
-            {proyecto.imagenes.map((_, i) => (
-              <button
-                key={i}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setCurrentImageIndex(i);
-                  setIsCarouselActive(false);
-                  setTimeout(() => setIsCarouselActive(true), 3000);
-                }}
-                className={`rounded-full transition-all duration-300 ${
-                  i === currentImageIndex 
-                    ? 'bg-white w-8 h-2.5 shadow-lg' 
-                    : 'bg-white/60 w-2.5 h-2.5 hover:bg-white/80'
-                }`}
+      <div className="relative h-96 md:h-112 overflow-hidden bg-gris-200">
+        {show.images.length > 0 ? (
+          <>
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={currentImageIndex}
+                src={show.images[currentImageIndex]}
+                alt={`${show.title} - ${currentImageIndex + 1}`}
+                className="w-full h-full object-cover"
+                initial={{ opacity: 0, scale: 1.1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.7, ease: "easeInOut" }}
+                loading="lazy"
               />
-            ))}
+            </AnimatePresence>
+
+            {/* Botones de navegación */}
+            {show.images.length > 1 && isHovered && (
+              <>
+                <motion.button
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onClick={prevImage}
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/90 hover:bg-white p-2 rounded-full transition-all"
+                >
+                  <ChevronLeft className="w-6 h-6 text-gris-800" />
+                </motion.button>
+                <motion.button
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onClick={nextImage}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/90 hover:bg-white p-2 rounded-full transition-all"
+                >
+                  <ChevronRight className="w-6 h-6 text-gris-800" />
+                </motion.button>
+              </>
+            )}
+
+            {/* Indicador de imágenes */}
+            {show.images.length > 1 && (
+              <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
+                {show.images.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setCurrentImageIndex(i);
+                    }}
+                    className={`rounded-full transition-all duration-300 ${
+                      i === currentImageIndex 
+                        ? 'bg-white w-8 h-2.5 shadow-lg' 
+                        : 'bg-white/60 w-2.5 h-2.5 hover:bg-white/80'
+                    }`}
+                  />
+                ))}
+              </div>
+            )}
+
+            {/* Overlay gradient */}
+            <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
+          </>
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-gris-300">
+            <span className="text-gris-600">Sin imágenes disponibles</span>
           </div>
         )}
-
-        {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
       </div>
 
       {/* Contenido de texto */}
       <div className="relative p-8">
         <h3 
-          className="font-lovelo text-2xl md:text-3xl mb-2 transition-colors duration-300"
-          style={{ color: proyecto.color }}
+          className="font-lovelo text-2xl md:text-3xl mb-4 transition-colors duration-300"
+          style={{ color }}
         >
-          {proyecto.titulo}
+          {show.title}
         </h3>
+
+        {/* Información adicional siempre visible con mejor formato */}
+        {additionalInfo.length > 0 && (
+          <div className="space-y-2 mb-4 pb-4 border-b border-gris-200">
+            {additionalInfo.map((info, i) => {
+              // Extraer tipo de información y valor
+              const [type, ...valueParts] = info.split(': ');
+              const value = valueParts.join(': ');
+              
+              return (
+                <div key={i} className="flex flex-col md:flex-row md:items-start gap-1 md:gap-2">
+                  <span className="font-gliker text-sm font-semibold" style={{ color, minWidth: 'fit-content' }}>
+                    {type}:
+                  </span>
+                  <p className="font-inter text-sm text-gris-700 leading-relaxed">
+                    {value}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        )}
 
         {/* Descripción que se despliega suavemente */}
         <motion.div
@@ -284,13 +434,13 @@ function ProyectoCard({ proyecto, index }: ProyectoCardProps) {
           animate={{
             height: isHovered ? 'auto' : 0,
             opacity: isHovered ? 1 : 0,
-            marginTop: isHovered ? 16 : 0
+            marginTop: isHovered ? 8 : 0
           }}
           transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
           className="overflow-hidden"
         >
           <p className="font-inter text-base text-gris-700 leading-relaxed">
-            {proyecto.descripcion}
+            {show.description}
           </p>
         </motion.div>
 
@@ -303,9 +453,10 @@ function ProyectoCard({ proyecto, index }: ProyectoCardProps) {
           transition={{ duration: 0.4, ease: 'easeOut' }}
           className="font-inter text-sm text-gris-500 italic mt-3"
         >
-          Hover para ver más →
+          {additionalInfo.length > 0 ? 'Hover para ver descripción completa →' : 'Hover para ver más →'}
         </motion.p>
       </div>
     </motion.div>
   );
 }
+
