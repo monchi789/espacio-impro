@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  espacio-impro:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: espacio-impro-web
+    ports:
+      - "4321:80"
+    restart: unless-stopped
+    networks:
+      - espacio-impro-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  espacio-impro-network:
+    driver: bridge
