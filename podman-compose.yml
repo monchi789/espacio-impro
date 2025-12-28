@@ -1,13 +1,44 @@
 version: '3.8'
 
 services:
-  espacio-impro:
+  # Backend API con FastAPI
+  espacio-impro-api:
+    build:
+      context: ./backend
+      dockerfile: dockerfile
+    container_name: espacio-impro-api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - CORS_ORIGINS=${CORS_ORIGINS}
+      - ADMIN_USER=${ADMIN_USER}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_EMAIL=${SMTP_EMAIL}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
+      - SMTP_FROM_NAME=${SMTP_FROM_NAME}
+    volumes:
+      - ./backend/data:/app/data
+    networks:
+      - espacio-impro-network
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Frontend Astro
+  espacio-impro-web:
     build:
       context: ./frontend
       dockerfile: dockerfile
     container_name: espacio-impro-web
     ports:
-      - "4321:80"
+      - "80:80"
     restart: unless-stopped
     networks:
       - espacio-impro-network
