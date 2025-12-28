@@ -9,6 +9,7 @@ services:
     container_name: espacio-impro-api
     restart: unless-stopped
     ports:
+      # Mapeo: Puerto 8001 del HOST -> Puerto 8000 del CONTENEDOR
       - "8001:8000"
     environment:
       - DATABASE_URL=${DATABASE_URL}
@@ -24,8 +25,9 @@ services:
       - ./backend/data:/app/data
     networks:
       - espacio-impro-network
+    # CAMBIO: Healthcheck sincronizado con el Dockerfile (usando urllib)
     healthcheck:
-      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000')"]
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000')"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -38,6 +40,7 @@ services:
       dockerfile: dockerfile
     container_name: espacio-impro-web
     ports:
+      # Mapeo: Puerto 4321 del HOST -> Puerto 80 del CONTENEDOR
       - "4321:80" 
     restart: unless-stopped
     networks:

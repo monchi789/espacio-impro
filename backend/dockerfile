@@ -3,17 +3,18 @@ FROM python:3.13-slim as builder
 
 WORKDIR /app
 
-# Instalar Poetry (añadido --no-cache-dir para optimizar)
+# Instalar Poetry
 RUN pip install --no-cache-dir poetry
 
 # Copiar archivos de configuración
 COPY pyproject.toml poetry.lock* ./
 
 # Crear virtualenv dentro del contenedor
-# CORRECCIÓN: --no-dev se cambió por --without dev (compatible con Poetry 2.0+)
+# CAMBIO: Usamos '--only main' en lugar de '--without dev'.
+# Esto evita el error si el grupo 'dev' no existe en tu pyproject.toml
 RUN poetry config virtualenvs.create true && \
     poetry config virtualenvs.in-project true && \
-    poetry install --without dev --no-interaction --no-ansi
+    poetry install --only main --no-interaction --no-ansi
 
 # Runtime stage
 FROM python:3.13-slim
@@ -35,11 +36,11 @@ COPY src ./src
 # Crear directorio para la base de datos
 RUN mkdir -p /app/data
 
-# Puerto expuesto
+# Puerto expuesto (Interno del contenedor)
 EXPOSE 8000
 
 # Health check
-# CORRECCIÓN: Usamos urllib (nativo de Python) en lugar de requests para evitar errores si requests no está instalado
+# Usamos urllib para no depender de librerías externas
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
     CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000')" || exit 1
 
