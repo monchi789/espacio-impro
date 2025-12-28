@@ -1,5 +1,11 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 from typing import List, Optional
+
+# Schema for Contact Form
+class ContactoFormulario(BaseModel):
+    nombre: str
+    email: EmailStr
+    mensaje: str
 
 # Schema for Input Data
 class EquipoBase(BaseModel):

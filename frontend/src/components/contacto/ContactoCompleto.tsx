@@ -11,18 +11,61 @@ export default function ContactoCompleto() {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Aquí iría la lógica de envío
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+    setErrorMessage('');
+
+    try {
+      const apiUrl = (import.meta.env.PUBLIC_API_URL as string | undefined) || 'http://localhost:8000';
+      
+      const response = await fetch(`${apiUrl}/api/contacto`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          nombre: formData.name,
+          email: formData.email,
+          mensaje: formData.message,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || 'Error al enviar el mensaje');
+      }
+
+      const result = await response.json();
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+      
+      // Limpiar el mensaje de éxito después de 5 segundos
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 5000);
+    } catch (error) {
+      console.error('Error:', error);
+      setSubmitStatus('error');
+      setErrorMessage(
+        error instanceof Error ? error.message : 'Ocurrió un error al enviar el mensaje'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <section className="min-h-screen py-32 md:py-40 bg-gris-50 relative overflow-hidden">
       {/* Fondo decorativo */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-lavanda-100 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-carmin-100 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-morado-100 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-rosado-100 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -34,10 +77,10 @@ export default function ContactoCompleto() {
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="font-lovelo text-4xl md:text-5xl lg:text-6xl mb-6" style={{ color: '#117cb2' }}>
+          <h1 className="font-lovelo text-4xl md:text-5xl lg:text-6xl mb-6" style={{ color: '#19b2c0' }}>
             CONTÁCTANOS
           </h1>
-          <p className="font-gliker text-2xl md:text-3xl text-lavanda mb-6">
+          <p className="font-gliker text-2xl md:text-3xl text-morado mb-6">
             Improvisar empieza con un primer "sí".
           </p>
           <p className="font-inter text-lg md:text-xl text-gris-700 max-w-2xl mx-auto">
@@ -56,16 +99,16 @@ export default function ContactoCompleto() {
           {/* Tarjeta de Email */}
           <div className="bg-white rounded-2xl p-6 shadow-lg border border-gris-100">
             <div className="flex flex-col items-center text-center gap-4">
-              <div className="w-14 h-14 bg-acero/10 rounded-xl flex items-center justify-center shrink-0">
-                <Mail className="w-7 h-7 text-acero" />
+              <div className="w-14 h-14 bg-turquesa/10 rounded-xl flex items-center justify-center shrink-0">
+                <Mail className="w-7 h-7 text-turquesa" />
               </div>
               <div>
-                <h3 className="font-gliker text-lg mb-2" style={{ color: '#117cb2' }}>
+                <h3 className="font-gliker text-lg mb-2" style={{ color: '#19b2c0' }}>
                   Correo Electrónico
                 </h3>
                 <a 
                   href="mailto:ee.improcusco@gmail.com" 
-                  className="font-inter text-sm text-gris-700 hover:text-acero transition-colors break-all"
+                  className="font-inter text-sm text-gris-700 hover:text-turquesa transition-colors break-all"
                 >
                   ee.improcusco@gmail.com
                 </a>
@@ -76,18 +119,18 @@ export default function ContactoCompleto() {
           {/* Tarjeta de Teléfono */}
           <div className="bg-white rounded-2xl p-6 shadow-lg border border-gris-100">
             <div className="flex flex-col items-center text-center gap-4">
-              <div className="w-14 h-14 bg-carmin/10 rounded-xl flex items-center justify-center shrink-0">
-                <Phone className="w-7 h-7 text-carmin" />
+              <div className="w-14 h-14 bg-rosado/10 rounded-xl flex items-center justify-center shrink-0">
+                <Phone className="w-7 h-7 text-rosado" />
               </div>
               <div>
-                <h3 className="font-gliker text-lg mb-2" style={{ color: '#ff657a' }}>
+                <h3 className="font-gliker text-lg mb-2" style={{ color: '#e03d8e' }}>
                   Teléfono / WhatsApp
                 </h3>
                 <a 
                   href="https://wa.me/51997971371"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-inter text-sm text-gris-700 hover:text-carmin transition-colors"
+                  className="font-inter text-sm text-gris-700 hover:text-rosado transition-colors"
                 >
                   +51 997 971 371
                 </a>
@@ -98,11 +141,11 @@ export default function ContactoCompleto() {
           {/* Tarjeta de Ubicación */}
           <div className="bg-white rounded-2xl p-6 shadow-lg border border-gris-100">
             <div className="flex flex-col items-center text-center gap-4">
-              <div className="w-14 h-14 bg-lavanda/10 rounded-xl flex items-center justify-center shrink-0">
-                <MapPin className="w-7 h-7 text-lavanda" />
+              <div className="w-14 h-14 bg-morado/10 rounded-xl flex items-center justify-center shrink-0">
+                <MapPin className="w-7 h-7 text-morado" />
               </div>
               <div>
-                <h3 className="font-gliker text-lg mb-2" style={{ color: '#6c648b' }}>
+                <h3 className="font-gliker text-lg mb-2" style={{ color: '#622f88' }}>
                   Ubicación
                 </h3>
                 <p className="font-inter text-sm text-gris-700">
@@ -115,11 +158,11 @@ export default function ContactoCompleto() {
           {/* Tarjeta de Horario */}
           <div className="bg-white rounded-2xl p-6 shadow-lg border border-gris-100">
             <div className="flex flex-col items-center text-center gap-4">
-              <div className="w-14 h-14 bg-dorado/10 rounded-xl flex items-center justify-center shrink-0">
-                <Clock className="w-7 h-7 text-dorado" />
+              <div className="w-14 h-14 bg-amarillo/10 rounded-xl flex items-center justify-center shrink-0">
+                <Clock className="w-7 h-7 text-amarillo" />
               </div>
               <div>
-                <h3 className="font-gliker text-lg mb-2" style={{ color: '#fed056' }}>
+                <h3 className="font-gliker text-lg mb-2" style={{ color: '#fdd70e' }}>
                   Horario de Respuesta
                 </h3>
                 <p className="font-inter text-sm text-gris-700">
@@ -141,34 +184,34 @@ export default function ContactoCompleto() {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gris-100 h-full flex flex-col justify-center">
-              <h2 className="font-lovelo text-2xl md:text-3xl mb-6" style={{ color: '#6c648b' }}>
+              <h2 className="font-lovelo text-2xl md:text-3xl mb-6" style={{ color: '#622f88' }}>
                 ¿POR QUÉ CONTACTARNOS?
               </h2>
               
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-2 h-2 bg-carmin rounded-full mt-2 shrink-0" />
+                  <div className="w-2 h-2 bg-rosado rounded-full mt-2 shrink-0" />
                   <p className="font-inter text-base text-gris-700 leading-relaxed">
                     <strong className="text-gris-900">Talleres y formación:</strong> Aprende improvisación teatral desde cero o perfecciona tus habilidades con nuestros workshops.
                   </p>
                 </div>
                 
                 <div className="flex items-start gap-4">
-                  <div className="w-2 h-2 bg-lavanda rounded-full mt-2 shrink-0" />
+                  <div className="w-2 h-2 bg-morado rounded-full mt-2 shrink-0" />
                   <p className="font-inter text-base text-gris-700 leading-relaxed">
                     <strong className="text-gris-900">Presentaciones:</strong> Contrata nuestros shows para eventos corporativos, festivales o celebraciones especiales.
                   </p>
                 </div>
                 
                 <div className="flex items-start gap-4">
-                  <div className="w-2 h-2 bg-dorado rounded-full mt-2 shrink-0" />
+                  <div className="w-2 h-2 bg-amarillo rounded-full mt-2 shrink-0" />
                   <p className="font-inter text-base text-gris-700 leading-relaxed">
                     <strong className="text-gris-900">Colaboraciones:</strong> Trabaja con nosotros en proyectos teatrales, investigaciones o iniciativas culturales.
                   </p>
                 </div>
                 
                 <div className="flex items-start gap-4">
-                  <div className="w-2 h-2 bg-acero rounded-full mt-2 shrink-0" />
+                  <div className="w-2 h-2 bg-turquesa rounded-full mt-2 shrink-0" />
                   <p className="font-inter text-base text-gris-700 leading-relaxed">
                     <strong className="text-gris-900">Únete a la comunidad:</strong> Forma parte de un espacio creativo donde explorar, aprender y crecer juntos.
                   </p>
@@ -192,7 +235,7 @@ export default function ContactoCompleto() {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gris-100">
-              <h2 className="font-lovelo text-2xl md:text-3xl mb-8" style={{ color: '#117cb2' }}>
+              <h2 className="font-lovelo text-2xl md:text-3xl mb-8" style={{ color: '#19b2c0' }}>
                 ENVÍANOS UN MENSAJE
               </h2>
 
@@ -205,7 +248,7 @@ export default function ContactoCompleto() {
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-5 py-4 bg-gris-50 border-2 border-gris-200 rounded-xl focus:ring-2 focus:ring-lavanda focus:border-lavanda focus:bg-white transition-all font-inter"
+                    className="w-full px-5 py-4 bg-gris-50 border-2 border-gris-200 rounded-xl focus:ring-2 focus:ring-morado focus:border-morado focus:bg-white transition-all font-inter"
                     placeholder="Tu nombre"
                     required
                   />
@@ -219,7 +262,7 @@ export default function ContactoCompleto() {
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-5 py-4 bg-gris-50 border-2 border-gris-200 rounded-xl focus:ring-2 focus:ring-lavanda focus:border-lavanda focus:bg-white transition-all font-inter"
+                    className="w-full px-5 py-4 bg-gris-50 border-2 border-gris-200 rounded-xl focus:ring-2 focus:ring-morado focus:border-morado focus:bg-white transition-all font-inter"
                     placeholder="tu@correo.com"
                     required
                   />
@@ -233,19 +276,44 @@ export default function ContactoCompleto() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     rows={8}
-                    className="w-full px-5 py-4 bg-gris-50 border-2 border-gris-200 rounded-xl focus:ring-2 focus:ring-lavanda focus:border-lavanda focus:bg-white transition-all resize-none font-inter"
+                    className="w-full px-5 py-4 bg-gris-50 border-2 border-gris-200 rounded-xl focus:ring-2 focus:ring-morado focus:border-morado focus:bg-white transition-all resize-none font-inter"
                     placeholder="Cuéntanos en qué te gustaría participar o colaborar"
                     required
                   />
                 </div>
 
+                {submitStatus === 'success' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-4 bg-green-50 border border-green-200 rounded-xl"
+                  >
+                    <p className="font-inter text-green-800 text-center">
+                      ¡Gracias por tu mensaje! Nos pondremos en contacto pronto.
+                    </p>
+                  </motion.div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-4 bg-red-50 border border-red-200 rounded-xl"
+                  >
+                    <p className="font-inter text-red-800 text-center">
+                      {errorMessage}
+                    </p>
+                  </motion.div>
+                )}
+
                 <motion.button
                   type="submit"
-                  className="w-full bg-carmin hover:bg-carmin-600 text-white font-inter font-semibold text-lg py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
+                  disabled={isSubmitting}
+                  className="w-full bg-rosado hover:bg-rosado-600 disabled:bg-gris-400 text-white font-inter font-semibold text-lg py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                  whileHover={{ scale: isSubmitting ? 1 : 1.02, y: isSubmitting ? 0 : -2 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                 >
-                  Enviar mensaje
+                  {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
                 </motion.button>
               </form>
             </div>

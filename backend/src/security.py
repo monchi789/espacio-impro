@@ -1,12 +1,16 @@
+import os
 import secrets
+from dotenv import load_dotenv
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 
+load_dotenv()
+
 security = HTTPBasic() 
 
-# Credenciales 
-ADMIN_USER = "admin"
-ADMIN_PASSWORD = "password123"
+# Credenciales desde variables de entorno
+ADMIN_USER = os.getenv("ADMIN_USER", "admin")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "password123")
 
 def get_current_admin(credentials: HTTPBasicCredentials = Depends(security)):
     """

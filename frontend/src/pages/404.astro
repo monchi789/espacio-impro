@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/layout/Footer.astro';
+---
+
+<Layout title="404 - Página No Encontrada | Espacio Impro" description="La página que buscas no existe. Vuelve al inicio y explora nuestro mundo de improvisación y teatro.">
+  <div style="min-height: 100vh; background-color: #f5f5f5; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8rem 1rem 2rem 1rem;">
+    <div style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <!-- Número 404 Morado -->
+      <h1 style="font-size: 180px; font-weight: 900; color: #622e88; margin: 0 0 2rem 0; line-height: 0.9; letter-spacing: -0.04em; font-family: 'Montserrat', sans-serif;">
+        404
+      </h1>
+
+      <!-- Descripción -->
+      <p style="font-size: 18px; color: #4b5563; margin: 0 0 3rem 0; line-height: 1.6; font-family: 'Inter', sans-serif; max-width: 500px;">
+        Parece que te has desviado del escenario. La página que buscas no existe o ha sido retirada del repertorio.
+        <span style="display: block; margin-top: 0.5rem;">Vuelve al inicio y continúa disfrutando de nuestra improvisación.</span>
+      </p>
+
+      <!-- Botón de acción con amor -->
+      <a 
+        href="/" 
+        style="
+          display: inline-block;
+          padding: 1rem 3rem;
+          background: linear-gradient(135deg, #79459f 0%, #622e88 100%);
+          color: white;
+          text-decoration: none;
+          font-weight: 600;
+          font-size: 18px;
+          border-radius: 0.75rem;
+          transition: all 0.3s ease;
+          box-shadow: 0 10px 25px rgba(98, 46, 136, 0.4);
+          font-family: 'Inter', sans-serif;
+          margin: 0 0 2rem 0;
+          border: none;
+          cursor: pointer;
+        "
+        onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 20px 40px rgba(98, 46, 136, 0.6)';"
+        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 25px rgba(98, 46, 136, 0.4)';"
+      >
+        ← Volver al Inicio
+      </a>
+
+      <!-- Logo al final GRANDE con efecto flotante -->
+      <style>
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-20px);
+          }
+        }
+        
+        .floating-logo {
+          animation: float 3s ease-in-out infinite;
+        }
+      </style>
+      
+      <img 
+        src="/logo.png" 
+        alt="Espacio Impro Logo" 
+        class="floating-logo"
+        style="width: 280px; height: 280px; object-fit: contain; opacity: 0.85; transition: opacity 0.3s ease;"
+        onmouseover="this.style.opacity='1';"
+        onmouseout="this.style.opacity='0.85';"
+      />
+    </div>
+  </div>
+
+  <Footer />
+</Layout>

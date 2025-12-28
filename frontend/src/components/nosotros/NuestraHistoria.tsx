@@ -28,21 +28,21 @@ export default function NuestraHistoria() {
       title: 'Los Inicios',
       description: 'Las personas que integran esta agrupación comenzaron a trabajar juntas, explorando la improvisación como un espacio de encuentro creativo y libertad escénica, descubriendo en el camino múltiples posibilidades para desarrollar la improvisación como parte del teatro.',
       icon: Sparkles,
-      titleColor: '#6c648b'
+      titleColor: '#622f88'
     },
     {
       year: '2022',
       title: 'Formalización',
       description: 'Se formalizó oficialmente como Compañía Teatral Espacio Escénico Impro, consolidando su identidad artística y pedagógica. Esta formalización marca el compromiso con la improvisación teatral, la formación constante, y la creación de espacios seguros con perspectiva de género y compromiso social.',
       icon: Calendar,
-      titleColor: '#ff657a'
+      titleColor: '#e03d8e'
     },
     {
       year: 'Hoy',
       title: 'Consolidación',
       description: 'Espacio Impro continúa como referente en la improvisación teatral en Cusco y la macro región Sur del Perú. Organiza festivales nacionales, promueve el intercambio cultural con maestros locales e internacionales, y mantiene su compromiso activo con las luchas sociales desde el arte escénico.',
       icon: Award,
-      titleColor: '#fed056'
+      titleColor: '#fdd70e'
     }
   ];
 
@@ -58,7 +58,7 @@ export default function NuestraHistoria() {
         >
           <h2 
             className="font-lovelo text-3xl md:text-4xl lg:text-5xl mb-4"
-            style={{ color: '#6c648b' }}
+            style={{ color: '#622f88' }}
           >
             NUESTRA HISTORIA
           </h2>
@@ -69,7 +69,7 @@ export default function NuestraHistoria() {
               <motion.p
                 key={currentFrase}
                 className="font-gliker text-xl md:text-2xl italic"
-                style={{ color: '#6c648b' }}
+                style={{ color: '#622f88' }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}

@@ -51,7 +51,7 @@ export default function CarouselComunidad() {
         >
           <h2 
             className="font-lovelo text-3xl md:text-4xl lg:text-5xl mb-4"
-            style={{ color: '#117cb2' }}
+            style={{ color: '#19b2c0' }}
           >
             NUESTRA COMUNIDAD
           </h2>

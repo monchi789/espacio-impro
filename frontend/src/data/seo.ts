@@ -111,3 +111,37 @@ export const contactSEO = {
     }
   }
 };
+
+export const portafolioSEO = {
+  title: "Portafolio | Espacio Impro Cusco",
+  description: "Descubre nuestro portafolio con más de 40 obras y formatos de improvisación teatral. Desde obras largo formato hasta espectáculos especiales y talleres con maestros internacionales.",
+  keywords: [
+    "portafolio teatro cusco",
+    "improvisación teatral",
+    "obras de teatro cusco",
+    "formatos de improvisación",
+    "teatro improvisado",
+    "espectáculos teatrales",
+    "compañía teatro cusco",
+    "arte escénico cusco",
+    "funciones teatro cusco",
+    "talleres teatrales",
+    "maestros de improvisación",
+    "teatro con perspectiva de género",
+    "teatro social cusco"
+  ],
+  openGraph: {
+    basic: {
+      title: "Portafolio | Espacio Impro Cusco",
+      type: "website",
+      image: "https://espacioimprocusco.com/logo_shared.png",
+      url: "https://espacioimprocusco.com/portafolio"
+    },
+    optional: {
+      description: "Descubre nuestro portafolio con más de 40 obras y formatos de improvisación teatral. Desde obras largo formato hasta espectáculos especiales y talleres con maestros internacionales.",
+      siteName: "Espacio Impro Cusco",
+      locale: "es_PE",
+      localeAlternate: ["es", "en"]
+    }
+  }
+};

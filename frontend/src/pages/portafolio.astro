@@ -2,9 +2,15 @@
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/layout/Footer.astro';
 import PortafolioBento from '../components/portafolio/PortafolioBento.tsx';
+import { portafolioSEO } from '../data/seo';
 ---
 
-<Layout title="Portafolio - Espacio Impro">
+<Layout 
+  title={portafolioSEO.title}
+  description={portafolioSEO.description}
+  keywords={portafolioSEO.keywords}
+  openGraph={portafolioSEO.openGraph}
+>
   <PortafolioBento client:only="react" />
   <Footer />
 </Layout>

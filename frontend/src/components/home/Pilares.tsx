@@ -9,30 +9,30 @@ const pilares = [
     title: "PERMITIRSE",
     subtitle: "Todo es cuestión de permisos",
     text: "Me permito ser, estar, hacer. Desafío mis propios límites internos. Habitar la impro es autorizarme a existir sin pedir permiso al miedo. Me abro al riesgo de habitarme y habitar la escena.",
-    color: "from-dorado to-dorado-600",
-    textColor: "text-dorado-900",
+    color: "from-amarillo to-amarillo-600",
+    textColor: "text-amarillo-900",
     icon: Sparkles,
-    iconColor: "text-dorado-600"
+    iconColor: "text-amarillo-600"
   },
   {
     id: 2,
     title: "PERTENECER",
     subtitle: "Todxs estamos en la misma barca",
     text: "Improvisar es escucharnos. Ningún cuerpo actúa solo: nos afectamos, nos acompañamos, nos sostenemos. Pertenecer es reconocernos en sociedad, que toda escena se construye en red y que mi libertad también nace de la tuya",
-    color: "from-carmin to-carmin-600",
-    textColor: "text-carmin-900",
+    color: "from-rosado to-rosado-600",
+    textColor: "text-rosado-900",
     icon: Users,
-    iconColor: "text-carmin-600"
+    iconColor: "text-rosado-600"
   },
   {
     id: 3,
     title: "PROFUNDIZAR",
     subtitle: "Detrás de todas las paredes está el cielo",
     text: "Profundizar es resistir la superficialidad. Cuestiono, busco sentido, dejo que el cuerpo piense. En cada improvisación hay una pregunta viva, una búsqueda que no se conforma con lo evidente.",
-    color: "from-acero to-acero-600",
-    textColor: "text-acero-900",
+    color: "from-turquesa to-turquesa-600",
+    textColor: "text-turquesa-900",
     icon: Search,
-    iconColor: "text-acero-600"
+    iconColor: "text-turquesa-600"
   }
 ];
 
@@ -54,7 +54,7 @@ export default function Pilares() {
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="font-lovelo text-4xl md:text-5xl lg:text-6xl mb-4" style={{ color: '#117cb2' }}>
+          <h2 className="font-lovelo text-4xl md:text-5xl lg:text-6xl mb-4" style={{ color: '#19b2c0' }}>
             NUESTROS PILARES
           </h2>
           <p className="font-gliker text-xl md:text-2xl text-gris-700">
@@ -96,7 +96,7 @@ export default function Pilares() {
               {/* Contenido */}
               <div className="relative z-10">
                 {/* Número */}
-                <div className="font-lovelo text-6xl md:text-7xl opacity-30 mb-4" style={{ color: '#ff657a' }}>
+                <div className="font-lovelo text-6xl md:text-7xl opacity-30 mb-4" style={{ color: '#e03d8e' }}>
                   0{pilar.id}
                 </div>
 

@@ -38,8 +38,8 @@ export default function Metodologia() {
     <section className="py-20 md:py-32 bg-white relative overflow-hidden">
       {/* Fondo decorativo */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-dorado-100 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-lavanda-100 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-0 w-96 h-96 bg-amarillo-100 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-morado-100 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -51,14 +51,14 @@ export default function Metodologia() {
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="font-lovelo text-4xl md:text-5xl lg:text-6xl mb-8" style={{ color: '#117cb2' }}>
+            <h2 className="font-lovelo text-4xl md:text-5xl lg:text-6xl mb-8" style={{ color: '#19b2c0' }}>
               NUESTRA METODOLOGÍA
             </h2>
 
             <div className="space-y-6 font-inter text-lg md:text-xl text-gris-700 leading-relaxed">
               <p>
                 No enseñamos a hacer impro <strong className="text-gris-900">"correctamente"</strong>,
-                enseñamos a <strong className="text-dorado-700">habitarla genuinamente</strong>.
+                enseñamos a <strong className="text-amarillo-700">habitarla genuinamente</strong>.
               </p>
 
               <p>
@@ -71,16 +71,16 @@ export default function Metodologia() {
             {/* Elementos decorativos */}
             <div className="mt-12 flex gap-4">
               <div className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-dorado rounded-full" />
-                <span className="font-gliker text-dorado-700 text-lg">Permitirse</span>
+                <div className="w-2 h-2 bg-amarillo rounded-full" />
+                <span className="font-gliker text-amarillo-700 text-lg">Permitirse</span>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-carmin rounded-full" />
-                <span className="font-gliker text-carmin-700 text-lg">Profundizar</span>
+                <div className="w-2 h-2 bg-rosado rounded-full" />
+                <span className="font-gliker text-rosado-700 text-lg">Profundizar</span>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-lavanda rounded-full" />
-                <span className="font-gliker text-lavanda-700 text-lg">Pertenecer</span>
+                <div className="w-2 h-2 bg-morado rounded-full" />
+                <span className="font-gliker text-morado-700 text-lg">Pertenecer</span>
               </div>
             </div>
           </motion.div>
@@ -93,7 +93,7 @@ export default function Metodologia() {
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl bg-linear-to-br from-lavanda-100 to-carmin-100 relative">
+            <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl bg-linear-to-br from-morado-100 to-rosado-100 relative">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={currentImage}
@@ -143,7 +143,7 @@ export default function Metodologia() {
 
             {/* Elemento decorativo flotante */}
             <motion.div
-              className="absolute -bottom-6 -right-6 w-32 h-32 bg-dorado-200 rounded-full opacity-40 blur-2xl"
+              className="absolute -bottom-6 -right-6 w-32 h-32 bg-amarillo-200 rounded-full opacity-40 blur-2xl"
               animate={{
                 scale: [1, 1.2, 1],
                 opacity: [0.4, 0.6, 0.4],
