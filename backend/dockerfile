@@ -6,35 +6,16 @@ WORKDIR /app
 # Instalar Poetry
 RUN pip install --no-cache-dir poetry
 
-# === CORRECCIÓN ===
-# Obligamos a Poetry a crear el .venv en la carpeta del proyecto usando variables de entorno.
-# Esto es más seguro que usar 'poetry config'.
+# Configuración vital para que cree la carpeta .venv en el lugar correcto
 ENV POETRY_VIRTUALENVS_IN_PROJECT=true \
     POETRY_VIRTUALENVS_CREATE=true
 
 # Copiar archivos de configuración
 COPY pyproject.toml poetry.lock* ./
 
-# Crear virtualenv e instalar
-# Ya no necesitamos los comandos 'poetry config' porque usamos las ENV de arriba.
+# Instalar dependencias
+# (Aseguramos regenerar el lock y no instalar el proyecto raíz aún)
 RUN poetry lock && \
-    poetry install --only main --no-root --no-interaction --no-ansi# Build stage
-FROM python:3.13-slim as builder
-
-WORKDIR /app
-
-# Instalar Poetry
-RUN pip install --no-cache-dir poetry
-
-# Copiar archivos de configuración
-COPY pyproject.toml poetry.lock* ./
-
-# Crear virtualenv dentro del contenedor
-# CAMBIO: Agregamos '--no-root'.
-# Esto evita que busque el README.md o intente instalar tu código fuente ahora.
-RUN poetry lock && \
-    poetry config virtualenvs.create true && \
-    poetry config virtualenvs.in-project true && \
     poetry install --only main --no-root --no-interaction --no-ansi
 
 # Runtime stage
@@ -42,57 +23,27 @@ FROM python:3.13-slim
 
 WORKDIR /app
 
-# Instalar variables de entorno necesarias
+# Variables de entorno para usar el entorno virtual creado arriba
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
     PATH="/app/.venv/bin:$PATH" \
     VIRTUAL_ENV="/app/.venv"
 
-# Copiar virtualenv desde builder
+# Copiar el entorno virtual desde la etapa builder
 COPY --from=builder /app/.venv /app/.venv
 
-# Copiar código de la aplicación
+# Copiar el código fuente
 COPY src ./src
 
-# Crear directorio para la base de datos
+# Crear directorio de datos
 RUN mkdir -p /app/data
 
-# Puerto expuesto
+# Puerto
 EXPOSE 8000
 
-# Health check
+# Health check (usando librería estándar de Python)
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
     CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000')" || exit 1
 
-# Comando de inicio
-CMD ["python", "-m", "uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]
-
-# Runtime stage
-FROM python:3.13-slim
-
-WORKDIR /app
-
-# Instalar variables de entorno necesarias
-ENV PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1 \
-    PATH="/app/.venv/bin:$PATH" \
-    VIRTUAL_ENV="/app/.venv"
-
-# Copiar virtualenv desde builder
-COPY --from=builder /app/.venv /app/.venv
-
-# Copiar código de la aplicación
-COPY src ./src
-
-# Crear directorio para la base de datos
-RUN mkdir -p /app/data
-
-# Puerto expuesto
-EXPOSE 8000
-
-# Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
-    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000')" || exit 1
-
-# Comando de inicio
+# Arrancar la aplicación
 CMD ["python", "-m", "uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]
