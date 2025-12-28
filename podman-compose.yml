@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  # Backend API con FastAPI
+  # Backend API
   espacio-impro-api:
     build:
       context: ./backend
@@ -9,7 +9,7 @@ services:
     container_name: espacio-impro-api
     restart: unless-stopped
     ports:
-      - "8000:8000"
+      - "8000:8000" # Esto está bien, coincide con el Nginx del API
     environment:
       - DATABASE_URL=${DATABASE_URL}
       - CORS_ORIGINS=${CORS_ORIGINS}
@@ -38,7 +38,7 @@ services:
       dockerfile: dockerfile
     container_name: espacio-impro-web
     ports:
-      - "80:80"
+      - "4321:80"  # <--- CAMBIO IMPORTANTE: Puerto 4321 externo, 80 interno
     restart: unless-stopped
     networks:
       - espacio-impro-network
