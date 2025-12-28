@@ -10,11 +10,12 @@ RUN pip install --no-cache-dir poetry
 COPY pyproject.toml poetry.lock* ./
 
 # Crear virtualenv dentro del contenedor
-# CORRECCIÓN: Quitamos '--no-update'. Solo 'poetry lock' es suficiente en v2.
+# CAMBIO: Agregamos '--no-root'.
+# Esto evita que busque el README.md o intente instalar tu código fuente ahora.
 RUN poetry lock && \
     poetry config virtualenvs.create true && \
     poetry config virtualenvs.in-project true && \
-    poetry install --only main --no-interaction --no-ansi
+    poetry install --only main --no-root --no-interaction --no-ansi
 
 # Runtime stage
 FROM python:3.13-slim
@@ -39,7 +40,7 @@ RUN mkdir -p /app/data
 # Puerto expuesto
 EXPOSE 8000
 
-# Health check usando urllib (nativo)
+# Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
     CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000')" || exit 1
 
