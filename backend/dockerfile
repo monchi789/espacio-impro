@@ -3,16 +3,17 @@ FROM python:3.13-slim as builder
 
 WORKDIR /app
 
-# Instalar Poetry
-RUN pip install poetry
+# Instalar Poetry (añadido --no-cache-dir para optimizar)
+RUN pip install --no-cache-dir poetry
 
 # Copiar archivos de configuración
 COPY pyproject.toml poetry.lock* ./
 
 # Crear virtualenv dentro del contenedor
+# CORRECCIÓN: --no-dev se cambió por --without dev (compatible con Poetry 2.0+)
 RUN poetry config virtualenvs.create true && \
     poetry config virtualenvs.in-project true && \
-    poetry install --no-dev --no-interaction --no-ansi
+    poetry install --without dev --no-interaction --no-ansi
 
 # Runtime stage
 FROM python:3.13-slim
@@ -38,8 +39,9 @@ RUN mkdir -p /app/data
 EXPOSE 8000
 
 # Health check
+# CORRECCIÓN: Usamos urllib (nativo de Python) en lugar de requests para evitar errores si requests no está instalado
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
-    CMD python -c "import requests; requests.get('http://localhost:8000')" || exit 1
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000')" || exit 1
 
 # Comando de inicio
 CMD ["python", "-m", "uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]
