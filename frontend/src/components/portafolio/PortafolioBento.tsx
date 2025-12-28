@@ -8,17 +8,19 @@ import { shows, type Show } from '../../data/shows';
 // Paleta de colores para las categorías
 const categoryColors: Record<string, string> = {
   "OBRAS Y FORMATOS LARGOS IMPROVISADOS": "#19b2c0", // turquesa
-  "ESPECTÁCULOS DE IMPRO CONOCIDOS CON UN TOQUE DE ESPACIO": "#622f88", // morado
-  "FORMATOS AMIGOS (PRESTADOS A ESPACIO IMPRO)": "#fdd70e", // amarillo
-  "OBRAS Y FORMATOS DE INVITADOS": "#e03d8e", // rosado
+  "ESPECTÁCULOS DE IMPRO CON TOQUE DE ESPACIO": "#622f88", // morado
+  "FORMATOS AMIGOS (PRESTADOS A ESPACIO)": "#fdd70e", // amarillo
+  "ESPECTÁCULOS PRODUCIDOS POR ESPACIO IMPRO": "#e03d8e", // rosado
+  "TALLERES PRODUCIDOS POR ESPACIO IMPRO": "#19b2c0", // turquesa
 };
 
 // Nombres más cortos para los botones de filtro
 const categoryShortNames: Record<string, string> = {
   "OBRAS Y FORMATOS LARGOS IMPROVISADOS": "Obras Largas",
-  "ESPECTÁCULOS DE IMPRO CONOCIDOS CON UN TOQUE DE ESPACIO": "Espectáculos",
-  "FORMATOS AMIGOS (PRESTADOS A ESPACIO IMPRO)": "Formatos Amigos",
-  "OBRAS Y FORMATOS DE INVITADOS": "Invitados"
+  "ESPECTÁCULOS DE IMPRO CON TOQUE DE ESPACIO": "Espectáculos",
+  "FORMATOS AMIGOS (PRESTADOS A ESPACIO)": "Formatos Amigos",
+  "ESPECTÁCULOS PRODUCIDOS POR ESPACIO IMPRO": "Producciones",
+  "TALLERES PRODUCIDOS POR ESPACIO IMPRO": "Talleres"
 };
 
 export default function PortafolioBento() {
@@ -36,9 +38,10 @@ export default function PortafolioBento() {
   // Ordenar categorías
   const categoryOrder = [
     "OBRAS Y FORMATOS LARGOS IMPROVISADOS",
-    "ESPECTÁCULOS DE IMPRO CONOCIDOS CON UN TOQUE DE ESPACIO",
-    "FORMATOS AMIGOS (PRESTADOS A ESPACIO IMPRO)",
-    "OBRAS Y FORMATOS DE INVITADOS"
+    "ESPECTÁCULOS DE IMPRO CON TOQUE DE ESPACIO",
+    "FORMATOS AMIGOS (PRESTADOS A ESPACIO)",
+    "ESPECTÁCULOS PRODUCIDOS POR ESPACIO IMPRO",
+    "TALLERES PRODUCIDOS POR ESPACIO IMPRO"
   ];
 
   // Determinar qué categorías mostrar
@@ -274,6 +277,7 @@ interface ShowCardProps {
 function ShowCard({ show, color, index }: ShowCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [imageLoaded, setImageLoaded] = useState<Record<number, boolean>>({});
 
   // Auto-advance carousel siempre está activo
   useEffect(() => {
@@ -296,6 +300,10 @@ function ShowCard({ show, color, index }: ShowCardProps) {
     setCurrentImageIndex((prev) => (prev - 1 + show.images.length) % show.images.length);
   };
 
+  const handleImageLoad = (index: number) => {
+    setImageLoaded(prev => ({ ...prev, [index]: true }));
+  };
+
   // Información adicional que se muestra
   const getAdditionalInfo = () => {
     const info = [];
@@ -309,6 +317,7 @@ function ShowCard({ show, color, index }: ShowCardProps) {
   };
 
   const additionalInfo = getAdditionalInfo();
+  const isCurrentImageLoaded = imageLoaded[currentImageIndex];
 
   return (
     <motion.div
@@ -325,21 +334,33 @@ function ShowCard({ show, color, index }: ShowCardProps) {
         setCurrentImageIndex(0);
       }}
     >
-      {/* Imagen / Carousel */}
+      {/* Imagen / Carousel con blur placeholder */}
       <div className="relative h-96 md:h-112 overflow-hidden bg-gris-200">
         {show.images.length > 0 ? (
           <>
+            {/* Blur Placeholder */}
+            <motion.div
+              className="absolute inset-0 bg-linear-to-br from-gray-300 to-gray-200"
+              animate={{ opacity: isCurrentImageLoaded ? 0 : 1 }}
+              transition={{ duration: 0.3 }}
+              style={{ zIndex: 1 }}
+            />
+
             <AnimatePresence mode="wait">
               <motion.img
                 key={currentImageIndex}
                 src={show.images[currentImageIndex]}
                 alt={`${show.title} - ${currentImageIndex + 1}`}
-                className="w-full h-full object-cover"
+                className={`w-full h-full object-cover transition-opacity duration-300 ${
+                  isCurrentImageLoaded ? 'opacity-100' : 'opacity-0'
+                }`}
+                style={{ zIndex: isCurrentImageLoaded ? 10 : 0 }}
                 initial={{ opacity: 0, scale: 1.1 }}
-                animate={{ opacity: 1, scale: 1 }}
+                animate={{ opacity: isCurrentImageLoaded ? 1 : 0, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.7, ease: "easeInOut" }}
                 loading="lazy"
+                onLoad={() => handleImageLoad(currentImageIndex)}
               />
             </AnimatePresence>
 
@@ -388,7 +409,7 @@ function ShowCard({ show, color, index }: ShowCardProps) {
             )}
 
             {/* Overlay gradient */}
-            <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent z-5" />
           </>
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-gris-300">

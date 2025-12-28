@@ -3,6 +3,8 @@ from sqlalchemy.orm import Session
 from ..database import get_db
 from ..models import EventoDB, EquipoDB
 from ..managers import manager
+from ..schemas import ContactoFormulario
+from ..email_service import email_service
 import json
 
 router = APIRouter(tags=["Publico"])
@@ -41,3 +43,28 @@ async def registrar_voto(equipo_id: int, db: Session = Depends(get_db)):
     await manager.broadcast(json.dumps(payload), evento.id)
 
     return {"ok": True}
+
+@router.post("/api/contacto")
+async def enviar_contacto(formulario: ContactoFormulario):
+    """
+    Endpoint para enviar mensajes de contacto.
+    Envía un correo al usuario y otro al administrador.
+    
+    Parámetros:
+    - nombre: Nombre de la persona
+    - email: Correo electrónico del remitente
+    - mensaje: Mensaje a enviar
+    """
+    try:
+        resultado = await email_service.send_contact_form_email(
+            nombre=formulario.nombre,
+            email_remitente=formulario.email,
+            mensaje=formulario.mensaje
+        )
+        return resultado
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error al enviar el correo: {str(e)}"
+        )
+

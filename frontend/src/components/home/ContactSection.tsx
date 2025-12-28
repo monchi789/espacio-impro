@@ -10,10 +10,52 @@ export default function ContactSection() {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Aquí iría la lógica de envío
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+    setErrorMessage('');
+
+    try {
+      const apiUrl = (import.meta.env.PUBLIC_API_URL as string | undefined) || 'http://localhost:8000';
+      
+      const response = await fetch(`${apiUrl}/api/contacto`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          nombre: formData.name,
+          email: formData.email,
+          mensaje: formData.message,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || 'Error al enviar el mensaje');
+      }
+
+      const result = await response.json();
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+      
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 5000);
+    } catch (error) {
+      console.error('Error:', error);
+      setSubmitStatus('error');
+      setErrorMessage(
+        error instanceof Error ? error.message : 'Ocurrió un error al enviar el mensaje'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -97,13 +139,38 @@ export default function ContactSection() {
                 />
               </div>
 
+              {submitStatus === 'success' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="p-4 bg-green-50 border border-green-200 rounded-xl"
+                >
+                  <p className="font-inter text-green-800 text-center">
+                    ¡Gracias por tu mensaje! Nos pondremos en contacto pronto.
+                  </p>
+                </motion.div>
+              )}
+
+              {submitStatus === 'error' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="p-4 bg-red-50 border border-red-200 rounded-xl"
+                >
+                  <p className="font-inter text-red-800 text-center">
+                    {errorMessage}
+                  </p>
+                </motion.div>
+              )}
+
               <motion.button
                 type="submit"
-                className="w-full bg-rosado hover:bg-rosado-600 text-white font-inter font-semibold text-lg py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
+                disabled={isSubmitting}
+                className="w-full bg-rosado hover:bg-rosado-600 disabled:bg-gris-400 text-white font-inter font-semibold text-lg py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                whileHover={{ scale: isSubmitting ? 1 : 1.02, y: isSubmitting ? 0 : -2 }}
+                whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
               >
-                Enviar mensaje
+                {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
               </motion.button>
             </form>
 
