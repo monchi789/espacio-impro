@@ -54,15 +54,15 @@ export default function Principios() {
               onHoverEnd={() => setHoveredIndex(null)}
             >
               {/* Acento de color */}
-              <div className="absolute top-0 left-0 w-2 h-full bg-lavanda group-hover:w-full transition-all duration-300 opacity-10" />
+              <div className="absolute top-0 left-0 w-2 h-full bg-morado group-hover:w-full transition-all duration-300 opacity-10" />
 
               <div className="relative z-10">
                 {/* Ícono placeholder */}
-                <div className="w-16 h-16 mb-6 bg-lavanda-200 rounded-full flex items-center justify-center">
+                <div className="w-16 h-16 mb-6 bg-morado-200 rounded-full flex items-center justify-center">
                   <span className="text-2xl">🎭</span>
                 </div>
 
-                <h3 className="font-gliker text-2xl text-lavanda mb-2">
+                <h3 className="font-gliker text-2xl text-morado mb-2">
                   {principio.title}
                 </h3>
                 

@@ -7,10 +7,10 @@ import { shows, type Show } from '../../data/shows';
 
 // Paleta de colores para las categorías
 const categoryColors: Record<string, string> = {
-  "OBRAS Y FORMATOS LARGOS IMPROVISADOS": "#117cb2", // azul
-  "ESPECTÁCULOS DE IMPRO CONOCIDOS CON UN TOQUE DE ESPACIO": "#6c648b", // lavanda
-  "FORMATOS AMIGOS (PRESTADOS A ESPACIO IMPRO)": "#fed056", // dorado
-  "OBRAS Y FORMATOS DE INVITADOS": "#ff657a", // carmin
+  "OBRAS Y FORMATOS LARGOS IMPROVISADOS": "#19b2c0", // turquesa
+  "ESPECTÁCULOS DE IMPRO CONOCIDOS CON UN TOQUE DE ESPACIO": "#622f88", // morado
+  "FORMATOS AMIGOS (PRESTADOS A ESPACIO IMPRO)": "#fdd70e", // amarillo
+  "OBRAS Y FORMATOS DE INVITADOS": "#e03d8e", // rosado
 };
 
 // Nombres más cortos para los botones de filtro
@@ -59,7 +59,7 @@ export default function PortafolioBento() {
           >
             <h1 
               className="font-lovelo text-4xl md:text-5xl lg:text-6xl mb-4"
-              style={{ color: '#117cb2' }}
+              style={{ color: '#19b2c0' }}
             >
               NUESTRO PORTAFOLIO
             </h1>
@@ -80,8 +80,8 @@ export default function PortafolioBento() {
               onClick={() => setSelectedCategory(null)}
               className={`px-6 py-3 rounded-full font-gliker text-sm md:text-base transition-all duration-300 ${
                 selectedCategory === null
-                  ? 'bg-acero text-white shadow-lg scale-105'
-                  : 'bg-white text-gris-700 border-2 border-acero hover:bg-acero hover:text-white'
+                  ? 'bg-turquesa text-white shadow-lg scale-105'
+                  : 'bg-white text-gris-700 border-2 border-turquesa hover:bg-turquesa hover:text-white'
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -141,8 +141,8 @@ export default function PortafolioBento() {
                     <motion.h2
                       className="font-lovelo text-2xl md:text-3xl mb-8 pb-4"
                       style={{ 
-                        color: categoryColors[category] || '#117cb2',
-                        borderBottom: `3px solid ${categoryColors[category] || '#117cb2'}`
+                        color: categoryColors[category] || '#19b2c0',
+                        borderBottom: `3px solid ${categoryColors[category] || '#19b2c0'}`
                       }}
                     >
                       {category}
@@ -156,8 +156,8 @@ export default function PortafolioBento() {
                       transition={{ duration: 0.4 }}
                       className="font-lovelo text-2xl md:text-3xl mb-8 pb-4"
                       style={{ 
-                        color: categoryColors[category] || '#117cb2',
-                        borderBottom: `3px solid ${categoryColors[category] || '#117cb2'}`
+                        color: categoryColors[category] || '#19b2c0',
+                        borderBottom: `3px solid ${categoryColors[category] || '#19b2c0'}`
                       }}
                     >
                       {category}
@@ -170,7 +170,7 @@ export default function PortafolioBento() {
                       <ShowCard 
                         key={show.title}
                         show={show} 
-                        color={categoryColors[category] || '#117cb2'}
+                        color={categoryColors[category] || '#19b2c0'}
                         index={showIndex}
                       />
                     ))}
@@ -186,8 +186,8 @@ export default function PortafolioBento() {
       <section className="py-20 bg-white relative overflow-hidden">
         {/* Elementos decorativos */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-lavanda rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-10 w-72 h-72 bg-carmin rounded-full blur-3xl" />
+          <div className="absolute top-20 left-10 w-72 h-72 bg-morado rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-10 w-72 h-72 bg-rosado rounded-full blur-3xl" />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -200,7 +200,7 @@ export default function PortafolioBento() {
             >
               <h2 
                 className="font-lovelo text-3xl md:text-4xl lg:text-5xl mb-6"
-                style={{ color: '#117cb2' }}
+                style={{ color: '#19b2c0' }}
               >
                 ¿TE INTERESA TRABAJAR CON NOSOTROS?
               </h2>
@@ -226,11 +226,11 @@ export default function PortafolioBento() {
                   href="https://wa.me/51997971371"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative inline-flex items-center gap-3 px-8 py-4 bg-carmin text-white font-gliker text-lg rounded-full overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="group relative inline-flex items-center gap-3 px-8 py-4 bg-rosado text-white font-gliker text-lg rounded-full overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <div className="absolute inset-0 bg-linear-to-r from-carmin-600 to-carmin opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-linear-to-r from-rosado-600 to-rosado opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <MessageCircle className="w-6 h-6 relative z-10" />
                   <span className="relative z-10">Escríbenos por WhatsApp</span>
                 </motion.a>
@@ -238,11 +238,11 @@ export default function PortafolioBento() {
                 {/* Botón Contacto */}
                 <motion.a
                   href="/contactanos"
-                  className="group relative inline-flex items-center gap-3 px-8 py-4 bg-acero text-white font-gliker text-lg rounded-full overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="group relative inline-flex items-center gap-3 px-8 py-4 bg-turquesa text-white font-gliker text-lg rounded-full overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <div className="absolute inset-0 bg-linear-to-r from-acero-600 to-acero opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-linear-to-r from-turquesa-600 to-turquesa opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <Mail className="w-6 h-6 relative z-10" />
                   <span className="relative z-10">Ir a Contacto</span>
                 </motion.a>

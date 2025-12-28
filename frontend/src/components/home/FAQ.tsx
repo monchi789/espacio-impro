@@ -37,8 +37,8 @@ export default function FAQ() {
     <section className="py-20 md:py-32 bg-gris-50 relative overflow-hidden">
       {/* Fondo decorativo */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-lavanda-100 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-carmin-100 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-morado-100 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-rosado-100 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -50,7 +50,7 @@ export default function FAQ() {
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="font-lovelo text-4xl md:text-5xl lg:text-6xl mb-4" style={{ color: '#117cb2' }}>
+          <h2 className="font-lovelo text-4xl md:text-5xl lg:text-6xl mb-4" style={{ color: '#19b2c0' }}>
             PREGUNTAS FRECUENTES
           </h2>
         </motion.div>
@@ -81,7 +81,7 @@ export default function FAQ() {
                   className="shrink-0"
                 >
                   <svg 
-                    className="w-6 h-6 text-lavanda" 
+                    className="w-6 h-6 text-morado" 
                     fill="none" 
                     viewBox="0 0 24 24" 
                     stroke="currentColor"

@@ -144,57 +144,70 @@
   /* Peso por defecto de Lovelo */
   --font-lovelo-weight: 900;
 
-  /* Colores Lavanda */
-  --color-lavanda: #6c648b;
-  --color-lavanda-50: #f0eff6;
-  --color-lavanda-100: #dcd9ec;
-  --color-lavanda-200: #b8b3d9;
-  --color-lavanda-300: #938dc7;
-  --color-lavanda-400: #6c648b;
-  --color-lavanda-500: #59527a;
-  --color-lavanda-600: #464068;
-  --color-lavanda-700: #322f56;
-  --color-lavanda-800: #1f1d44;
-  --color-lavanda-900: #0d0b33;
+  /* Colores Morado */
+  --color-morado: #622e88;
+  --color-morado-50: #f2e9f9;
+  --color-morado-100: #caa4e7;
+  --color-morado-200: #ad80cf;
+  --color-morado-300: #9261b7;
+  --color-morado-400: #79459f;
+  --color-morado-500: #622e88;
+  --color-morado-600: #542874;
+  --color-morado-700: #462161;
+  --color-morado-800: #381b4e;
+  --color-morado-900: #2b143b;
 
-  /* Colores Carmín */
-  --color-carmin: #ff657a;
-  --color-carmin-50: #ffeef0;
-  --color-carmin-100: #ffd6db;
-  --color-carmin-200: #ffadb7;
-  --color-carmin-300: #ff8593;
-  --color-carmin-400: #ff657a;
-  --color-carmin-500: #e05467;
-  --color-carmin-600: #c24354;
-  --color-carmin-700: #a53242;
-  --color-carmin-800: #882230;
-  --color-carmin-900: #6b111f;
+  /* Colores Rosado */
+  --color-rosado: #e03d8e;
+  --color-rosado-50: #f9e7f0;
+  --color-rosado-100: #f8a9d0;
+  --color-rosado-200: #f28cbf;
+  --color-rosado-300: #ec70ae;
+  --color-rosado-400: #e6569d;
+  --color-rosado-500: #e03d8e;
+  --color-rosado-600: #c0347a;
+  --color-rosado-700: #a12b66;
+  --color-rosado-800: #812352;
+  --color-rosado-900: #621a3e;
 
-  /* Colores Dorado */
-  --color-dorado: #fed056;
-  --color-dorado-50: #fff9e5;
-  --color-dorado-100: #fff1c2;
-  --color-dorado-200: #ffe89e;
-  --color-dorado-300: #fedf7a;
-  --color-dorado-400: #fed056;
-  --color-dorado-500: #d9ac40;
-  --color-dorado-600: #b3892a;
-  --color-dorado-700: #8d6614;
-  --color-dorado-800: #674400;
-  --color-dorado-900: #412300;
+  /* Colores Amarillo */
+  --color-amarillo: #fdd70e;
+  --color-amarillo-50: #f9f6e2;
+  --color-amarillo-100: #feed95;
+  --color-amarillo-200: #fee873;
+  --color-amarillo-300: #fde251;
+  --color-amarillo-400: #fddc30;
+  --color-amarillo-500: #fdd70e;
+  --color-amarillo-600: #d9b80c;
+  --color-amarillo-700: #b69a0a;
+  --color-amarillo-800: #927c08;
+  --color-amarillo-900: #6f5e06;
 
-  /* Colores Acero */
-  --color-acero: #117cb2;
-  --color-acero-50: #e5f4fa;
-  --color-acero-100: #cce9f5;
-  --color-acero-200: #99d3eb;
-  --color-acero-300: #66bde1;
-  --color-acero-400: #33a7d7;
-  --color-acero-500: #117cb2;
-  --color-acero-600: #0f6998;
-  --color-acero-700: #0d577e;
-  --color-acero-800: #0a4564;
-  --color-acero-900: #08334a;
+  /* Colores Turquesa */
+  --color-turquesa: #19b2c0;
+  --color-turquesa-50: #e4f8f9;
+  --color-turquesa-100: #95eaf2;
+  --color-turquesa-200: #71dce5;
+  --color-turquesa-300: #51cdd9;
+  --color-turquesa-400: #33bfcc;
+  --color-turquesa-500: #19b2c0;
+  --color-turquesa-600: #1599a5;
+  --color-turquesa-700: #12808a;
+  --color-turquesa-800: #0e676f;
+  --color-turquesa-900: #0b4e54;
+
+  /* Colores Blanco */
+  --color-blanco: #ffffff;
+  --color-blanco-50: #f9f9f9;
+  --color-blanco-100: #ffffff;
+  --color-blanco-200: #ffffff;
+  --color-blanco-300: #ffffff;
+  --color-blanco-400: #ffffff;
+  --color-blanco-500: #ffffff;
+  --color-blanco-600: #dbdbdb;
+  --color-blanco-700: #b7b7b7;
+  --color-blanco-800: #939393;
+  --color-blanco-900: #707070;
 
   /* Colores Gris */
   --color-gris: #2d2d2d;
@@ -211,10 +224,10 @@
 
   /* Alias para compatibilidad */
   --color-brand-dark: #2d2d2d;
-  --color-brand-purple: #6c648b;
-  --color-brand-pink: #ff657a;
-  --color-brand-blue: #117cb2;
-  --color-brand-yellow: #fed056;
+  --color-brand-purple: #622e88;
+  --color-brand-pink: #e03d8e;
+  --color-brand-blue: #19b2c0;
+  --color-brand-yellow: #fdd70e;
 }
 
 /* ===== UTILITY CLASSES ===== */
@@ -227,57 +240,70 @@
   .font-subheading { font-family: var(--font-gliker); }
   .font-body { font-family: var(--font-inter); }
 
-  /* Text Colors - Lavanda */
-  .text-lavanda { color: var(--color-lavanda); }
-  .text-lavanda-50 { color: var(--color-lavanda-50); }
-  .text-lavanda-100 { color: var(--color-lavanda-100); }
-  .text-lavanda-200 { color: var(--color-lavanda-200); }
-  .text-lavanda-300 { color: var(--color-lavanda-300); }
-  .text-lavanda-400 { color: var(--color-lavanda-400); }
-  .text-lavanda-500 { color: var(--color-lavanda-500); }
-  .text-lavanda-600 { color: var(--color-lavanda-600); }
-  .text-lavanda-700 { color: var(--color-lavanda-700); }
-  .text-lavanda-800 { color: var(--color-lavanda-800); }
-  .text-lavanda-900 { color: var(--color-lavanda-900); }
+  /* Text Colors - Morado */
+  .text-morado { color: var(--color-morado); }
+  .text-morado-50 { color: var(--color-morado-50); }
+  .text-morado-100 { color: var(--color-morado-100); }
+  .text-morado-200 { color: var(--color-morado-200); }
+  .text-morado-300 { color: var(--color-morado-300); }
+  .text-morado-400 { color: var(--color-morado-400); }
+  .text-morado-500 { color: var(--color-morado-500); }
+  .text-morado-600 { color: var(--color-morado-600); }
+  .text-morado-700 { color: var(--color-morado-700); }
+  .text-morado-800 { color: var(--color-morado-800); }
+  .text-morado-900 { color: var(--color-morado-900); }
 
-  /* Text Colors - Carmín */
-  .text-carmin { color: var(--color-carmin); }
-  .text-carmin-50 { color: var(--color-carmin-50); }
-  .text-carmin-100 { color: var(--color-carmin-100); }
-  .text-carmin-200 { color: var(--color-carmin-200); }
-  .text-carmin-300 { color: var(--color-carmin-300); }
-  .text-carmin-400 { color: var(--color-carmin-400); }
-  .text-carmin-500 { color: var(--color-carmin-500); }
-  .text-carmin-600 { color: var(--color-carmin-600); }
-  .text-carmin-700 { color: var(--color-carmin-700); }
-  .text-carmin-800 { color: var(--color-carmin-800); }
-  .text-carmin-900 { color: var(--color-carmin-900); }
+  /* Text Colors - Rosado */
+  .text-rosado { color: var(--color-rosado); }
+  .text-rosado-50 { color: var(--color-rosado-50); }
+  .text-rosado-100 { color: var(--color-rosado-100); }
+  .text-rosado-200 { color: var(--color-rosado-200); }
+  .text-rosado-300 { color: var(--color-rosado-300); }
+  .text-rosado-400 { color: var(--color-rosado-400); }
+  .text-rosado-500 { color: var(--color-rosado-500); }
+  .text-rosado-600 { color: var(--color-rosado-600); }
+  .text-rosado-700 { color: var(--color-rosado-700); }
+  .text-rosado-800 { color: var(--color-rosado-800); }
+  .text-rosado-900 { color: var(--color-rosado-900); }
 
-  /* Text Colors - Dorado */
-  .text-dorado { color: var(--color-dorado); }
-  .text-dorado-50 { color: var(--color-dorado-50); }
-  .text-dorado-100 { color: var(--color-dorado-100); }
-  .text-dorado-200 { color: var(--color-dorado-200); }
-  .text-dorado-300 { color: var(--color-dorado-300); }
-  .text-dorado-400 { color: var(--color-dorado-400); }
-  .text-dorado-500 { color: var(--color-dorado-500); }
-  .text-dorado-600 { color: var(--color-dorado-600); }
-  .text-dorado-700 { color: var(--color-dorado-700); }
-  .text-dorado-800 { color: var(--color-dorado-800); }
-  .text-dorado-900 { color: var(--color-dorado-900); }
+  /* Text Colors - Amarillo */
+  .text-amarillo { color: var(--color-amarillo); }
+  .text-amarillo-50 { color: var(--color-amarillo-50); }
+  .text-amarillo-100 { color: var(--color-amarillo-100); }
+  .text-amarillo-200 { color: var(--color-amarillo-200); }
+  .text-amarillo-300 { color: var(--color-amarillo-300); }
+  .text-amarillo-400 { color: var(--color-amarillo-400); }
+  .text-amarillo-500 { color: var(--color-amarillo-500); }
+  .text-amarillo-600 { color: var(--color-amarillo-600); }
+  .text-amarillo-700 { color: var(--color-amarillo-700); }
+  .text-amarillo-800 { color: var(--color-amarillo-800); }
+  .text-amarillo-900 { color: var(--color-amarillo-900); }
 
-  /* Text Colors - Acero */
-  .text-acero { color: var(--color-acero); }
-  .text-acero-50 { color: var(--color-acero-50); }
-  .text-acero-100 { color: var(--color-acero-100); }
-  .text-acero-200 { color: var(--color-acero-200); }
-  .text-acero-300 { color: var(--color-acero-300); }
-  .text-acero-400 { color: var(--color-acero-400); }
-  .text-acero-500 { color: var(--color-acero-500); }
-  .text-acero-600 { color: var(--color-acero-600); }
-  .text-acero-700 { color: var(--color-acero-700); }
-  .text-acero-800 { color: var(--color-acero-800); }
-  .text-acero-900 { color: var(--color-acero-900); }
+  /* Text Colors - Turquesa */
+  .text-turquesa { color: var(--color-turquesa); }
+  .text-turquesa-50 { color: var(--color-turquesa-50); }
+  .text-turquesa-100 { color: var(--color-turquesa-100); }
+  .text-turquesa-200 { color: var(--color-turquesa-200); }
+  .text-turquesa-300 { color: var(--color-turquesa-300); }
+  .text-turquesa-400 { color: var(--color-turquesa-400); }
+  .text-turquesa-500 { color: var(--color-turquesa-500); }
+  .text-turquesa-600 { color: var(--color-turquesa-600); }
+  .text-turquesa-700 { color: var(--color-turquesa-700); }
+  .text-turquesa-800 { color: var(--color-turquesa-800); }
+  .text-turquesa-900 { color: var(--color-turquesa-900); }
+
+  /* Text Colors - Blanco */
+  .text-blanco { color: var(--color-blanco); }
+  .text-blanco-50 { color: var(--color-blanco-50); }
+  .text-blanco-100 { color: var(--color-blanco-100); }
+  .text-blanco-200 { color: var(--color-blanco-200); }
+  .text-blanco-300 { color: var(--color-blanco-300); }
+  .text-blanco-400 { color: var(--color-blanco-400); }
+  .text-blanco-500 { color: var(--color-blanco-500); }
+  .text-blanco-600 { color: var(--color-blanco-600); }
+  .text-blanco-700 { color: var(--color-blanco-700); }
+  .text-blanco-800 { color: var(--color-blanco-800); }
+  .text-blanco-900 { color: var(--color-blanco-900); }
 
   /* Text Colors - Gris */
   .text-gris { color: var(--color-gris); }
@@ -292,57 +318,70 @@
   .text-gris-800 { color: var(--color-gris-800); }
   .text-gris-900 { color: var(--color-gris-900); }
 
-  /* Background Colors - Lavanda */
-  .bg-lavanda { background-color: var(--color-lavanda); }
-  .bg-lavanda-50 { background-color: var(--color-lavanda-50); }
-  .bg-lavanda-100 { background-color: var(--color-lavanda-100); }
-  .bg-lavanda-200 { background-color: var(--color-lavanda-200); }
-  .bg-lavanda-300 { background-color: var(--color-lavanda-300); }
-  .bg-lavanda-400 { background-color: var(--color-lavanda-400); }
-  .bg-lavanda-500 { background-color: var(--color-lavanda-500); }
-  .bg-lavanda-600 { background-color: var(--color-lavanda-600); }
-  .bg-lavanda-700 { background-color: var(--color-lavanda-700); }
-  .bg-lavanda-800 { background-color: var(--color-lavanda-800); }
-  .bg-lavanda-900 { background-color: var(--color-lavanda-900); }
+  /* Background Colors - Morado */
+  .bg-morado { background-color: var(--color-morado); }
+  .bg-morado-50 { background-color: var(--color-morado-50); }
+  .bg-morado-100 { background-color: var(--color-morado-100); }
+  .bg-morado-200 { background-color: var(--color-morado-200); }
+  .bg-morado-300 { background-color: var(--color-morado-300); }
+  .bg-morado-400 { background-color: var(--color-morado-400); }
+  .bg-morado-500 { background-color: var(--color-morado-500); }
+  .bg-morado-600 { background-color: var(--color-morado-600); }
+  .bg-morado-700 { background-color: var(--color-morado-700); }
+  .bg-morado-800 { background-color: var(--color-morado-800); }
+  .bg-morado-900 { background-color: var(--color-morado-900); }
 
-  /* Background Colors - Carmín */
-  .bg-carmin { background-color: var(--color-carmin); }
-  .bg-carmin-50 { background-color: var(--color-carmin-50); }
-  .bg-carmin-100 { background-color: var(--color-carmin-100); }
-  .bg-carmin-200 { background-color: var(--color-carmin-200); }
-  .bg-carmin-300 { background-color: var(--color-carmin-300); }
-  .bg-carmin-400 { background-color: var(--color-carmin-400); }
-  .bg-carmin-500 { background-color: var(--color-carmin-500); }
-  .bg-carmin-600 { background-color: var(--color-carmin-600); }
-  .bg-carmin-700 { background-color: var(--color-carmin-700); }
-  .bg-carmin-800 { background-color: var(--color-carmin-800); }
-  .bg-carmin-900 { background-color: var(--color-carmin-900); }
+  /* Background Colors - Rosado */
+  .bg-rosado { background-color: var(--color-rosado); }
+  .bg-rosado-50 { background-color: var(--color-rosado-50); }
+  .bg-rosado-100 { background-color: var(--color-rosado-100); }
+  .bg-rosado-200 { background-color: var(--color-rosado-200); }
+  .bg-rosado-300 { background-color: var(--color-rosado-300); }
+  .bg-rosado-400 { background-color: var(--color-rosado-400); }
+  .bg-rosado-500 { background-color: var(--color-rosado-500); }
+  .bg-rosado-600 { background-color: var(--color-rosado-600); }
+  .bg-rosado-700 { background-color: var(--color-rosado-700); }
+  .bg-rosado-800 { background-color: var(--color-rosado-800); }
+  .bg-rosado-900 { background-color: var(--color-rosado-900); }
 
-  /* Background Colors - Dorado */
-  .bg-dorado { background-color: var(--color-dorado); }
-  .bg-dorado-50 { background-color: var(--color-dorado-50); }
-  .bg-dorado-100 { background-color: var(--color-dorado-100); }
-  .bg-dorado-200 { background-color: var(--color-dorado-200); }
-  .bg-dorado-300 { background-color: var(--color-dorado-300); }
-  .bg-dorado-400 { background-color: var(--color-dorado-400); }
-  .bg-dorado-500 { background-color: var(--color-dorado-500); }
-  .bg-dorado-600 { background-color: var(--color-dorado-600); }
-  .bg-dorado-700 { background-color: var(--color-dorado-700); }
-  .bg-dorado-800 { background-color: var(--color-dorado-800); }
-  .bg-dorado-900 { background-color: var(--color-dorado-900); }
+  /* Background Colors - Amarillo */
+  .bg-amarillo { background-color: var(--color-amarillo); }
+  .bg-amarillo-50 { background-color: var(--color-amarillo-50); }
+  .bg-amarillo-100 { background-color: var(--color-amarillo-100); }
+  .bg-amarillo-200 { background-color: var(--color-amarillo-200); }
+  .bg-amarillo-300 { background-color: var(--color-amarillo-300); }
+  .bg-amarillo-400 { background-color: var(--color-amarillo-400); }
+  .bg-amarillo-500 { background-color: var(--color-amarillo-500); }
+  .bg-amarillo-600 { background-color: var(--color-amarillo-600); }
+  .bg-amarillo-700 { background-color: var(--color-amarillo-700); }
+  .bg-amarillo-800 { background-color: var(--color-amarillo-800); }
+  .bg-amarillo-900 { background-color: var(--color-amarillo-900); }
 
-  /* Background Colors - Acero */
-  .bg-acero { background-color: var(--color-acero); }
-  .bg-acero-50 { background-color: var(--color-acero-50); }
-  .bg-acero-100 { background-color: var(--color-acero-100); }
-  .bg-acero-200 { background-color: var(--color-acero-200); }
-  .bg-acero-300 { background-color: var(--color-acero-300); }
-  .bg-acero-400 { background-color: var(--color-acero-400); }
-  .bg-acero-500 { background-color: var(--color-acero-500); }
-  .bg-acero-600 { background-color: var(--color-acero-600); }
-  .bg-acero-700 { background-color: var(--color-acero-700); }
-  .bg-acero-800 { background-color: var(--color-acero-800); }
-  .bg-acero-900 { background-color: var(--color-acero-900); }
+  /* Background Colors - Turquesa */
+  .bg-turquesa { background-color: var(--color-turquesa); }
+  .bg-turquesa-50 { background-color: var(--color-turquesa-50); }
+  .bg-turquesa-100 { background-color: var(--color-turquesa-100); }
+  .bg-turquesa-200 { background-color: var(--color-turquesa-200); }
+  .bg-turquesa-300 { background-color: var(--color-turquesa-300); }
+  .bg-turquesa-400 { background-color: var(--color-turquesa-400); }
+  .bg-turquesa-500 { background-color: var(--color-turquesa-500); }
+  .bg-turquesa-600 { background-color: var(--color-turquesa-600); }
+  .bg-turquesa-700 { background-color: var(--color-turquesa-700); }
+  .bg-turquesa-800 { background-color: var(--color-turquesa-800); }
+  .bg-turquesa-900 { background-color: var(--color-turquesa-900); }
+
+  /* Background Colors - Blanco */
+  .bg-blanco { background-color: var(--color-blanco); }
+  .bg-blanco-50 { background-color: var(--color-blanco-50); }
+  .bg-blanco-100 { background-color: var(--color-blanco-100); }
+  .bg-blanco-200 { background-color: var(--color-blanco-200); }
+  .bg-blanco-300 { background-color: var(--color-blanco-300); }
+  .bg-blanco-400 { background-color: var(--color-blanco-400); }
+  .bg-blanco-500 { background-color: var(--color-blanco-500); }
+  .bg-blanco-600 { background-color: var(--color-blanco-600); }
+  .bg-blanco-700 { background-color: var(--color-blanco-700); }
+  .bg-blanco-800 { background-color: var(--color-blanco-800); }
+  .bg-blanco-900 { background-color: var(--color-blanco-900); }
 
   /* Background Colors - Gris */
   .bg-gris { background-color: var(--color-gris); }
@@ -358,42 +397,42 @@
   .bg-gris-900 { background-color: var(--color-gris-900); }
 
   /* Hover Text Colors */
-  .hover\:text-carmin:hover { color: var(--color-carmin); }
-  .hover\:text-acero:hover { color: var(--color-acero); }
-  .hover\:text-lavanda:hover { color: var(--color-lavanda); }
-  .hover\:text-dorado:hover { color: var(--color-dorado); }
+  .hover\:text-rosado:hover { color: var(--color-rosado); }
+  .hover\:text-turquesa:hover { color: var(--color-turquesa); }
+  .hover\:text-morado:hover { color: var(--color-morado); }
+  .hover\:text-amarillo:hover { color: var(--color-amarillo); }
 
   /* Hover Background Colors */
-  .hover\:bg-carmin:hover { background-color: var(--color-carmin); }
-  .hover\:bg-acero:hover { background-color: var(--color-acero); }
-  .hover\:bg-lavanda:hover { background-color: var(--color-lavanda); }
-  .hover\:bg-dorado:hover { background-color: var(--color-dorado); }
+  .hover\:bg-rosado:hover { background-color: var(--color-rosado); }
+  .hover\:bg-turquesa:hover { background-color: var(--color-turquesa); }
+  .hover\:bg-morado:hover { background-color: var(--color-morado); }
+  .hover\:bg-amarillo:hover { background-color: var(--color-amarillo); }
 
   /* From/To Colors for Gradients */
-  .from-lavanda { --tw-gradient-from: var(--color-lavanda); }
-  .from-carmin { --tw-gradient-from: var(--color-carmin); }
-  .from-dorado { --tw-gradient-from: var(--color-dorado); }
-  .from-acero { --tw-gradient-from: var(--color-acero); }
-  .from-gris { --tw-gradient-from: var(--color-gris); }
+  .from-morado { --tw-gradient-from: var(--color-morado); }
+  .from-rosado { --tw-gradient-from: var(--color-rosado); }
+  .from-amarillo { --tw-gradient-from: var(--color-amarillo); }
+  .from-turquesa { --tw-gradient-from: var(--color-turquesa); }
+  .from-blanco { --tw-gradient-from: var(--color-blanco); }
   
-  .to-lavanda { --tw-gradient-to: var(--color-lavanda); }
-  .to-carmin { --tw-gradient-to: var(--color-carmin); }
-  .to-dorado { --tw-gradient-to: var(--color-dorado); }
-  .to-acero { --tw-gradient-to: var(--color-acero); }
-  .to-gris { --tw-gradient-to: var(--color-gris); }
+  .to-morado { --tw-gradient-to: var(--color-morado); }
+  .to-rosado { --tw-gradient-to: var(--color-rosado); }
+  .to-amarillo { --tw-gradient-to: var(--color-amarillo); }
+  .to-turquesa { --tw-gradient-to: var(--color-turquesa); }
+  .to-blanco { --tw-gradient-to: var(--color-blanco); }
 
   /* Alias para compatibilidad */
   .text-brand-dark { color: var(--color-gris-800); }
-  .text-brand-purple { color: var(--color-lavanda); }
-  .text-accent-pink { color: var(--color-carmin); }
+  .text-brand-purple { color: var(--color-morado); }
+  .text-accent-pink { color: var(--color-rosado); }
   .bg-brand-dark { background-color: var(--color-gris-800); }
-  .bg-brand-purple { background-color: var(--color-lavanda); }
-  .bg-accent-pink { background-color: var(--color-carmin); }
-  .bg-accent-blue { background-color: var(--color-acero); }
-  .hover\:text-accent-pink:hover { color: var(--color-carmin); }
-  .hover\:bg-accent-blue:hover { background-color: var(--color-acero); }
-  .from-brand-purple { --tw-gradient-from: var(--color-lavanda); }
-  .to-accent-pink { --tw-gradient-to: var(--color-carmin); }
+  .bg-brand-purple { background-color: var(--color-morado); }
+  .bg-accent-pink { background-color: var(--color-rosado); }
+  .bg-accent-blue { background-color: var(--color-turquesa); }
+  .hover\:text-accent-pink:hover { color: var(--color-rosado); }
+  .hover\:bg-accent-blue:hover { background-color: var(--color-turquesa); }
+  .from-brand-purple { --tw-gradient-from: var(--color-morado); }
+  .to-accent-pink { --tw-gradient-to: var(--color-rosado); }
 
   /* Typography Sizes */
   .text-h1 { font-size: 3.5rem; line-height: 1.2; font-weight: 900; }
@@ -422,7 +461,7 @@ h1, h2 {
 h3 {
   font-family: var(--font-gliker);
   font-weight: 600;
-  color: var(--color-lavanda);
+  color: var(--color-morado);
 }
 
 h4, h5, h6 {

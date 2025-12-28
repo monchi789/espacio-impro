@@ -21,7 +21,7 @@ export default function Manifiesto() {
   }, []);
 
   return (
-    <section className="pt-6 pb-16 md:pt-8 md:pb-24 bg-linear-to-br from-lavanda-50 to-carmin-50 relative overflow-hidden">
+    <section className="pt-6 pb-16 md:pt-8 md:pb-24 bg-linear-to-br from-morado-50 to-rosado-50 relative overflow-hidden">
       {/* Textura de fondo sutil */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -51,7 +51,7 @@ export default function Manifiesto() {
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex ? 'bg-lavanda w-8' : 'bg-lavanda-300'
+                  index === currentIndex ? 'bg-morado w-8' : 'bg-morado-300'
                 }`}
               />
             ))}
