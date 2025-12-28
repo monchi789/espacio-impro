@@ -10,10 +10,10 @@ const dynamicPhrases = [
 ];
 
 const colors = [
-  '#6c648b', // lavanda
-  '#ff657a', // carmin
-  '#fed056', // dorado
-  '#117cb2', // acero
+  '#622f88', // morado
+  '#e03d8e', // rosado
+  '#fdd70e', // amarillo
+  '#19b2c0', // turquesa
 ];
 
 // Proyectiles de estrellas - salen desde el centro del logo hacia afuera
@@ -87,7 +87,7 @@ export default function Hero() {
           >
             <span className="text-gris-900">COMPAÑÍA TEATRAL</span>
             <br />
-            <span style={{ color: '#117cb2' }}>ESPACIO ESCÉNICO IMPRO</span>
+            <span style={{ color: '#19b2c0' }}>ESPACIO ESCÉNICO IMPRO</span>
           </motion.h1>
 
           {/* Frases dinámicas con efecto typewriter en la misma línea */}
@@ -97,7 +97,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <span className="font-gliker text-2xl md:text-3xl text-lavanda">
+            <span className="font-gliker text-2xl md:text-3xl text-morado">
               Impro es...
             </span>
             <span className="font-inter text-xl md:text-2xl text-gris-700 italic min-w-[280px]">
@@ -125,7 +125,7 @@ export default function Hero() {
           {/* Botón CTA */}
           <motion.a
             href="/contactanos"
-            className="cta-button inline-flex items-center gap-3 bg-carmin hover:bg-carmin-600 text-white font-inter font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+            className="cta-button inline-flex items-center gap-3 bg-rosado hover:bg-rosado-600 text-white font-inter font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
@@ -231,28 +231,28 @@ export default function Hero() {
             }}
           >
             <motion.div
-              className="w-full h-full flex items-center justify-center p-8"
+              className="w-full h-full flex items-center justify-center p-4"
               animate={{
-                rotate: [0, -360],
+              rotate: [0, -360],
               }}
               transition={{
-                duration: 80,
-                repeat: Infinity,
-                ease: "linear",
+              duration: 80,
+              repeat: Infinity,
+              ease: "linear",
               }}
             >
               <motion.img 
-                src="/logo.png" 
-                alt="Espacio Impro Logo" 
-                className="w-full h-full object-contain drop-shadow-2xl"
-                animate={{
-                  y: [0, -10, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
+              src="/logo.png" 
+              alt="Espacio Impro Logo" 
+              className="w-full h-full object-contain drop-shadow-2xl"
+              animate={{
+                y: [0, -10, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
               />
             </motion.div>
           </motion.div>

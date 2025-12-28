@@ -9,13 +9,13 @@ export default function MisionVision() {
       icon: Target,
       title: 'MISIÓN',
       content: 'Somos una Escuela y Compañía Teatral, con perspectiva de género, responsable y comprometida con la sociedad, que a través de los espectáculos y puestas en escena que realiza, busca transmitir diferentes emociones, ideas y sensaciones. Además de crear espacios seguros dentro y fuera del escenario, para el elenco y el público espectador.',
-      titleColor: '#ff657a'
+      titleColor: '#e03d8e'
     },
     {
       icon: Eye,
       title: 'VISIÓN',
       content: 'Aspiramos ser un referente en la improvisación teatral en Cusco y la macro región Sur del Perú, con una identidad propia, promoviendo la creación colectiva, la investigación constante y la construcción de espacios seguros y libres, donde el arte se convierta en herramienta de transformación social y voz plural para nuestras realidades.',
-      titleColor: '#fed056'
+      titleColor: '#fdd70e'
     }
   ];
 

@@ -15,8 +15,7 @@ const navItems = [
       <!-- Logo -->
       <div class="shrink-0">
         <a href="/" class="flex items-center space-x-3">
-          <img src="/logo.png" alt="Espacio Impro Logo" class="w-16 h-16 md:w-20 md:h-20 object-contain" />
-          <span class="text-2xl md:text-3xl font-lovelo text-gris-800">Espacio Impro</span>
+            <img src="/logo.png" alt="Espacio Impro Logo" class="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-44 lg:h-44 object-contain" />
         </a>
       </div>
 
@@ -25,7 +24,7 @@ const navItems = [
         {navItems.map((item) => (
           <a
             href={item.href}
-            class="font-inter text-gris-800 hover:text-carmin transition-colors duration-200 font-medium text-base tracking-wide"
+            class="font-inter text-gris-800 hover:text-rosado transition-colors duration-200 font-medium text-base tracking-wide"
           >
             {item.name}
           </a>
@@ -34,7 +33,7 @@ const navItems = [
         <!-- Botón Contáctanos con cohete -->
         <a
           href="/contactanos"
-          class="contactanos-btn group relative flex items-center gap-2 bg-lavanda hover:bg-lavanda-600 text-white font-inter font-medium text-base px-6 py-3 rounded-full transition-all duration-300 shadow-md hover:shadow-lg"
+          class="contactanos-btn group relative flex items-center gap-2 bg-morado hover:bg-morado-600 text-white font-inter font-medium text-base px-6 py-3 rounded-full transition-all duration-300 shadow-md hover:shadow-lg"
         >
           <span>Contáctanos</span>
           <Rocket class="w-5 h-5 rocket-icon" />
@@ -46,7 +45,7 @@ const navItems = [
         <button
           id="mobile-menu-button"
           type="button"
-          class="inline-flex items-center justify-center p-2 rounded-md text-gris-800 hover:text-carmin hover:bg-gris-100 transition-colors duration-200"
+          class="inline-flex items-center justify-center p-2 rounded-md text-gris-800 hover:text-rosado hover:bg-gris-100 transition-colors duration-200"
           aria-controls="mobile-menu"
           aria-expanded="false"
         >
@@ -83,7 +82,7 @@ const navItems = [
         {navItems.map((item) => (
           <a
             href={item.href}
-            class="block px-3 py-2 rounded-md text-base font-inter font-medium text-gris-800 hover:text-carmin hover:bg-gris-50 transition-colors duration-200"
+            class="block px-3 py-2 rounded-md text-base font-inter font-medium text-gris-800 hover:text-rosado hover:bg-gris-50 transition-colors duration-200"
           >
             {item.name}
           </a>
@@ -92,7 +91,7 @@ const navItems = [
         <!-- Botón Contáctanos móvil -->
         <a
           href="/contactanos"
-          class="flex items-center gap-2 mx-3 mt-3 bg-lavanda hover:bg-lavanda-600 text-white font-inter font-medium text-base px-4 py-2.5 rounded-full transition-all duration-300 justify-center"
+          class="flex items-center gap-2 mx-3 mt-3 bg-morado hover:bg-morado-600 text-white font-inter font-medium text-base px-4 py-2.5 rounded-full transition-all duration-300 justify-center"
         >
           <span>Contáctanos</span>
           <Rocket class="w-5 h-5 rocket-icon" />

@@ -27,7 +27,7 @@ export default function Principios() {
     {
       id: 1,
       icon: Sparkles,
-      titleColor: '#fed056', // Dorado
+      titleColor: '#fdd70e', // Amarillo
       title: 'PERMITIRSE',
       subtitle: 'Todo es cuestión de permisos',
       resumen: 'Me permito ser, estar, hacer, desafiar mis límites internos.',
@@ -42,7 +42,7 @@ Cuando me permito, me afirmo en el devenir, más allá del miedo, del deber y de
     {
       id: 2,
       icon: Users,
-      titleColor: '#ff657a', // Carmin
+      titleColor: '#e03d8e', // Rosado
       title: 'PERTENECER',
       subtitle: 'Todxs estamos en la misma barca',
       resumen: 'Pertenezco a un grupo, tengo responsabilidad social y conciencia de clase.',
@@ -57,7 +57,7 @@ Al pertenecer me reconozco en la red de interdependencias. Acepto que mi liberta
     {
       id: 3,
       icon: Search,
-      titleColor: '#117cb2', // Azul acero
+      titleColor: '#19b2c0', // Turquesa
       title: 'PROFUNDIZAR',
       subtitle: 'Detrás de todas las paredes está el cielo',
       resumen: 'Me cuestiono, me formo, busco sentido en el hacer.',
@@ -85,7 +85,7 @@ Cuando profundizo, dejo que el cuerpo filosofe.`,
         >
           <h2 
             className="font-lovelo text-3xl md:text-4xl lg:text-5xl mb-4"
-            style={{ color: '#fed056' }}
+            style={{ color: '#fdd70e' }}
           >
             NUESTROS PRINCIPIOS
           </h2>
@@ -98,7 +98,7 @@ Cuando profundizo, dejo que el cuerpo filosofe.`,
               <motion.p
                 key={currentFrase}
                 className="font-gliker text-xl md:text-2xl italic"
-                style={{ color: '#fed056' }}
+                style={{ color: '#fdd70e' }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}

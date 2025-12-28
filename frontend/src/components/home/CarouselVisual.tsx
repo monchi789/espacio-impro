@@ -77,7 +77,7 @@ export default function CarouselVisual() {
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="font-lovelo text-4xl md:text-5xl lg:text-6xl mb-6" style={{ color: '#117cb2' }}>
+          <h2 className="font-lovelo text-4xl md:text-5xl lg:text-6xl mb-6" style={{ color: '#19b2c0' }}>
             IMPROVISAMOS DESDE EL PRESENTE
           </h2>
           <p className="font-inter text-lg md:text-xl text-gris-700 max-w-3xl mx-auto leading-relaxed">
@@ -90,7 +90,7 @@ export default function CarouselVisual() {
             <AnimatePresence mode="wait">
               <motion.h3
                 key={currentFrase}
-                className="font-gliker text-3xl md:text-4xl lg:text-5xl text-lavanda text-center"
+                className="font-gliker text-3xl md:text-4xl lg:text-5xl text-morado text-center"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
