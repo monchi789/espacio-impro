@@ -1,6 +1,4 @@
-# ==========================================
 # Build stage
-# ==========================================
 FROM python:3.13-slim as builder
 
 WORKDIR /app
@@ -12,16 +10,13 @@ RUN pip install --no-cache-dir poetry
 COPY pyproject.toml poetry.lock* ./
 
 # Crear virtualenv dentro del contenedor
-# CRUCIAL: 'poetry lock' arregla el desajuste entre toml y lock.
-# 'install --only main' evita errores si no tienes grupo dev.
-RUN poetry lock --no-update && \
+# CORRECCIÓN: Quitamos '--no-update'. Solo 'poetry lock' es suficiente en v2.
+RUN poetry lock && \
     poetry config virtualenvs.create true && \
     poetry config virtualenvs.in-project true && \
     poetry install --only main --no-interaction --no-ansi
 
-# ==========================================
 # Runtime stage
-# ==========================================
 FROM python:3.13-slim
 
 WORKDIR /app
@@ -41,11 +36,10 @@ COPY src ./src
 # Crear directorio para la base de datos
 RUN mkdir -p /app/data
 
-# Puerto expuesto (Interno del contenedor)
+# Puerto expuesto
 EXPOSE 8000
 
-# Health check
-# Usamos urllib para no depender de librerías externas
+# Health check usando urllib (nativo)
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
     CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000')" || exit 1
 
