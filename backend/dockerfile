@@ -1,4 +1,6 @@
+# ==========================================
 # Build stage
+# ==========================================
 FROM python:3.13-slim as builder
 
 WORKDIR /app
@@ -10,13 +12,16 @@ RUN pip install --no-cache-dir poetry
 COPY pyproject.toml poetry.lock* ./
 
 # Crear virtualenv dentro del contenedor
-# CAMBIO: Usamos '--only main' en lugar de '--without dev'.
-# Esto evita el error si el grupo 'dev' no existe en tu pyproject.toml
-RUN poetry config virtualenvs.create true && \
+# CRUCIAL: 'poetry lock' arregla el desajuste entre toml y lock.
+# 'install --only main' evita errores si no tienes grupo dev.
+RUN poetry lock --no-update && \
+    poetry config virtualenvs.create true && \
     poetry config virtualenvs.in-project true && \
     poetry install --only main --no-interaction --no-ansi
 
+# ==========================================
 # Runtime stage
+# ==========================================
 FROM python:3.13-slim
 
 WORKDIR /app
