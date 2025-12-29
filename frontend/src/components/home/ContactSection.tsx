@@ -21,7 +21,7 @@ export default function ContactSection() {
     setErrorMessage('');
 
     try {
-      const apiUrl = (import.meta.env.PUBLIC_API_URL as string | undefined) || 'http://localhost:8000';
+      const apiUrl = (import.meta.env.PUBLIC_API_URL as string | undefined) || 'https://api.espacioimprocusco.com';
       
       const response = await fetch(`${apiUrl}/api/contacto`, {
         method: 'POST',
