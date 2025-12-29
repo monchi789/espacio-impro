@@ -32,16 +32,16 @@ jobs:
             echo "🧹 Limpiando imágenes dangling (<none>)"
             podman images -f "dangling=true" -q | xargs -r podman rmi -f
 
-            echo "🛑 Deteniendo contenedor anterior"
-            podman-compose stop espacio-impro || true
+            echo "🛑 Deteniendo servicios anteriores"
+            podman-compose stop || true
 
-            echo "🗑️ Eliminando contenedor anterior si existe"
-            podman rm -f espacio-impro-web || true
+            echo "🗑️ Eliminando contenedores anteriores"
+            podman-compose down || true
 
-            echo "⚙️ Construyendo imagen actualizada"
-            podman-compose build espacio-impro
+            echo "⚙️ Construyendo imágenes actualizadas"
+            podman-compose build
 
-            echo "🚀 Levantando servicio espacio-impro con recreación forzada"
-            podman-compose up -d --force-recreate --remove-orphans espacio-impro
+            echo "🚀 Levantando servicios con recreación forzada"
+            podman-compose up -d --force-recreate --remove-orphans
 
             echo "✅ Despliegue finalizado correctamente"

@@ -85,7 +85,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <span className="text-gris-900">COMPAÑÍA TEATRAL</span>
+            <span className="text-gris-900">ESCUELA Y COMPAÑÍA</span>
             <br />
             <span style={{ color: '#19b2c0' }}>ESPACIO ESCÉNICO IMPRO</span>
           </motion.h1>
