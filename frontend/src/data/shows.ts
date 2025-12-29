@@ -32,7 +32,7 @@ export const shows: Show[] = [
   {
     title: "LLÉVAME",
     category: "OBRAS Y FORMATOS LARGOS IMPROVISADOS",
-    note: "Tragedia improvisada",
+    note: "Unipersonal de tragedia improvisada",
     director: "Gonzalo Rodolico - El Piso Impro (Argentina)",
     cast: "Fátima Aguivel",
     images: [
@@ -169,7 +169,7 @@ export const shows: Show[] = [
   {
     title: "DAME MATCH",
     category: "ESPECTÁCULOS DE IMPRO CON TOQUE DE ESPACIO",
-    director: "Karla Rodríguez",
+    director: "Vica Rodríguez",
     note: "Formato de Juego de Improvisación",
     images: [
       "/images/presentaciones/Espectaculos de Impro Conocidos con un toque de Espacio/Dame Match/dame-match_1.webp",
@@ -178,7 +178,7 @@ export const shows: Show[] = [
       "/images/presentaciones/Espectaculos de Impro Conocidos con un toque de Espacio/Dame Match/dame-match_4.webp",
       "/images/presentaciones/Espectaculos de Impro Conocidos con un toque de Espacio/Dame Match/dame-match_5.webp"
     ],
-    description: "Dos equipos de improvisadores compiten en divertidas pruebas y juegos. Una batalla teatral donde la velocidad, la creatividad y el ingenio son las armas. ¿Quién será el equipo ganador de este match de impro?"
+    description: "Espectáculo de Match de improvisación, al estilo deportivo, 2 equipos, 1 árbitro, 1 ganador: el público. "
   },
   {
     title: "MONTAGE",
@@ -195,9 +195,8 @@ export const shows: Show[] = [
   {
     title: "ESPACIO JAM",
     category: "ESPECTÁCULOS DE IMPRO CON TOQUE DE ESPACIO",
-    note: "Formato Musical de Improvisación",
-    director: "Octavio Aguilar",
-    cast: "Octavio Aguilar, Alexi Fernández, Octavio Condori",
+    director: "Daniel Maravi y Oscar Valiente",
+    cast: "Los Khumpas e invitadxs especiales",
     images: [
       "/images/presentaciones/Espectaculos de Impro Conocidos con un toque de Espacio/Espacio Jam/espacio-jam_1.webp",
       "/images/presentaciones/Espectaculos de Impro Conocidos con un toque de Espacio/Espacio Jam/espacio-jam_2.webp",
@@ -206,14 +205,14 @@ export const shows: Show[] = [
       "/images/presentaciones/Espectaculos de Impro Conocidos con un toque de Espacio/Espacio Jam/espacio-jam_5.webp",
       "/images/presentaciones/Espectaculos de Impro Conocidos con un toque de Espacio/Espacio Jam/espacio-jam_6.webp"
     ],
-    description: "Un espectáculo donde la improvisación se mezcla con la música en vivo. Los músicos crean ritmos mientras los actores improvisan escenas, formando una sinfonía teatral donde todo es posible."
+    description: "Jam de Improvisión teatral, dirigido por Los Khumpas, personajes entrañables y cómicos qué con su toque personal generan encuentros entre improvisadores, Clowns, narradores, bailarines, y diversos artistas escénicos qué se atreven a saltar al vacío y crear historias juntos."
   },
   {
     title: "ESPACIO WARMIS",
     category: "ESPECTÁCULOS DE IMPRO CON TOQUE DE ESPACIO",
     note: "Formato de Mujeres Improvisadoras",
-    director: "Vica Rodriguez",
-    cast: "Vica Rodriguez, Estrellita Sotomayor, Rebeca Velazquez, Rosario Gutierrez",
+    director: "Fátima Aguilar",
+    cast: "Mujeres y feminidades de Espacio Impro",
     images: [
       "/images/presentaciones/Espectaculos de Impro Conocidos con un toque de Espacio/Espacio Warmis/espacio-warmis_1.webp",
       "/images/presentaciones/Espectaculos de Impro Conocidos con un toque de Espacio/Espacio Warmis/espacio-warmis_2.webp",
@@ -221,7 +220,7 @@ export const shows: Show[] = [
       "/images/presentaciones/Espectaculos de Impro Conocidos con un toque de Espacio/Espacio Warmis/espacio-warmis_4.webp",
       "/images/presentaciones/Espectaculos de Impro Conocidos con un toque de Espacio/Espacio Warmis/espacio-warmis_5.webp"
     ],
-    description: "Un espectáculo de improvisación exclusivamente de mujeres. Voces femeninas que crean historias en el momento, generando un espacio donde las perspectivas y experiencias de las mujeres son el centro de la escena."
+    description: "Jam para improvisadoras, junto a la Waylia y la Waylaca, un espectáculo de muchas risas e insolencia."
   },
   {
     title: "ES PA'SHOT",
@@ -234,14 +233,14 @@ export const shows: Show[] = [
       "/images/presentaciones/Espectaculos de Impro Conocidos con un toque de Espacio/Es Pa Shot/es-pa-shot_3.webp",
       "/images/presentaciones/Espectaculos de Impro Conocidos con un toque de Espacio/Es Pa Shot/es-pa-shot_4.webp"
     ],
-    description: "Escenas cortas, rápidas e impactantes. Este formato de improvisación ofrece dosis de humor en pequeñas porciones. Una batería de momentos inesperados que te dejarán sin aliento."
+    description: "Formato Bar de improvisación, para divertirse, mientras compartes unos shotcitos con tus compas."
   },
   {
     title: "LA BANCA",
     category: "ESPECTÁCULOS DE IMPRO CON TOQUE DE ESPACIO",
     note: "Formato de Improvisación de Humor",
-    director: "Oscar Valiente",
-    cast: "Oscar Valiente, Daniel Maravi, Karla Rodríguez",
+    director: "Fátima Aguivel y Vica Rodriguez",
+    cast: "Espacio Impro",
     images: [
       "/images/presentaciones/Espectaculos de Impro Conocidos con un toque de Espacio/La Banca/la-banca_1.webp",
       "/images/presentaciones/Espectaculos de Impro Conocidos con un toque de Espacio/La Banca/la-banca_2.webp",
@@ -249,7 +248,7 @@ export const shows: Show[] = [
       "/images/presentaciones/Espectaculos de Impro Conocidos con un toque de Espacio/La Banca/la-banca_4.webp",
       "/images/presentaciones/Espectaculos de Impro Conocidos con un toque de Espacio/La Banca/la-banca_5.webp"
     ],
-    description: "Un formato donde los actores improvisan libremente mientras la audiencia se sienta en 'la banca' observando. Las historias surgen del momento sin guión, solo improvisación pura y humor sin filtros."
+    description: "Formato Largo de impro. Una banca en un parque, 24 horas alrededor de ella, muchas historias."
   },
 
   // ---------------------------------------------------------
