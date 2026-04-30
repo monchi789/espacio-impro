@@ -17,13 +17,13 @@ import { homepageSEO } from '../data/seo.ts';
   keywords={homepageSEO.keywords}
   openGraph={homepageSEO.openGraph}
 >
-  <Hero client:only="react" />
-  <Pilares client:only="react" />
-  <CarouselVisual client:only="react" />
-  <Manifiesto client:only="react" />
-  <Metodologia client:only="react" />
-  <ContactSection client:only="react" />
-  <FAQ client:only="react" />
+  <Hero client:load />
+  <Pilares client:visible />
+  <CarouselVisual client:visible />
+  <Manifiesto client:visible />
+  <Metodologia client:visible />
+  <ContactSection client:visible />
+  <FAQ client:visible />
   <Footer />
 
   <!-- JSON-LD Organización -->

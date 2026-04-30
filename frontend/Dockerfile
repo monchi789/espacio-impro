@@ -19,16 +19,23 @@ COPY . .
 
 RUN npm run build
 
+# Pre-comprimir assets estáticos (gzip) para servir con gzip_static on
+RUN find /app/dist -type f \( \
+        -name '*.html' -o -name '*.css' -o -name '*.js' -o \
+        -name '*.svg'  -o -name '*.json' -o -name '*.xml' -o \
+        -name '*.txt'  -o -name '*.map' \
+    \) -size +512c -exec gzip -9 -k -f {} \;
+
 
 # ============================================================
 # Stage 2 — runtime: nginx alpine sirviendo /dist
 # ============================================================
 FROM nginx:1.27-alpine
 
-# Conf personalizada (cache de assets, fallback a 404 nativo de Astro)
+# Conf personalizada (cache de assets, brotli/gzip estáticos)
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Sitio estático
+# Sitio estático + .gz + .br pregenerados
 COPY --from=builder /app/dist /usr/share/nginx/html
 
 EXPOSE 80

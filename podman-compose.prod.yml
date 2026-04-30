@@ -20,7 +20,7 @@ services:
       - CORS_ORIGINS=${CORS_ORIGINS}
       - ENVIRONMENT=${ENVIRONMENT}
     volumes:
-      - ./impronakuy-backend/data:/app/data
+      - ./impronakuy-backend/data:/app/data:U
     networks:
       - espacio-impro-network
     healthcheck:

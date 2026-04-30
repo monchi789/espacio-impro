@@ -20,5 +20,8 @@
     "react-dom": "^19.2.0",
     "tailwindcss": "^4.1.17",
     "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
   }
 }
