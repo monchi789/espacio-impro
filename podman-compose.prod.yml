@@ -6,7 +6,7 @@ version: '3.8'
 
 services:
   impronakuy-api:
-    image: ghcr.io/wonder-clouds/impronakuy-api:${IMAGE_TAG:-latest}
+    image: ghcr.io/monchi789/impronakuy-api:${IMAGE_TAG:-latest}
     container_name: impronakuy-api
     restart: unless-stopped
     ports:
@@ -31,7 +31,7 @@ services:
       start_period: 40s
 
   espacio-impro-web:
-    image: ghcr.io/wonder-clouds/espacio-impro-web:${IMAGE_TAG:-latest}
+    image: ghcr.io/monchi789/espacio-impro-web:${IMAGE_TAG:-latest}
     container_name: espacio-impro-web
     restart: unless-stopped
     ports:
