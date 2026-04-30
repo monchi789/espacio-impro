@@ -1,0 +1,10 @@
+---
+import DashboardLayout from '../../../components/dashboard/DashboardLayout.astro'
+import AuthGuard from '../../../components/dashboard/AuthGuard.tsx'
+import FechasList from '../../../components/dashboard/FechasList.tsx'
+---
+<DashboardLayout title="Fechas — Impronakuy 2026">
+  <AuthGuard client:load>
+    <FechasList client:load />
+  </AuthGuard>
+</DashboardLayout>

@@ -1,0 +1,115 @@
+---
+---
+<section id="foto-grupal" class="ik-group-section">
+  <h2 class="ik-group-title">TODOS LOS EQUIPOS</h2>
+  <div class="ik-group-wrapper" aria-hidden="false">
+    <img
+      src="/images/impronakuy-2026/Todos Juntos.webp"
+      alt="Todos los equipos de Impronakuy 2026"
+      class="ik-group-photo"
+      loading="lazy"
+      decoding="async"
+    />
+    <div class="ik-group-fade" aria-hidden="true"></div>
+    <div class="ik-group-glow" aria-hidden="true"></div>
+    <div class="ik-group-particles" aria-hidden="true">
+      {Array.from({ length: 18 }).map((_, i) => (
+        <span class="ik-particle" style={`--i:${i}; --d:${(i * 0.37) % 4}s; --x:${(i * 53) % 100}%; --y:${(i * 71) % 100}%;`}></span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .ik-group-section {
+    padding: 4rem 1.25rem 6rem;
+    text-align: center;
+  }
+  .ik-group-title {
+    font-family: 'IK-Norwester', 'Bebas Neue', 'IK-Lovelo', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.8rem, 4.5vw, 3rem);
+    letter-spacing: 0.22em;
+    color: #fff;
+    text-shadow: 0 0 18px rgba(255,255,255,0.45), 0 0 40px var(--ik-accent);
+    margin-bottom: 2.5rem;
+    animation: ik-title-pulse 3.5s ease-in-out infinite;
+  }
+  .ik-group-wrapper {
+    position: relative;
+    max-width: 1300px;
+    margin: 0 auto;
+    isolation: isolate;
+  }
+  .ik-group-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter:
+      drop-shadow(0 0 30px rgba(168, 85, 247, 0.35))
+      drop-shadow(0 0 60px rgba(34, 211, 238, 0.22))
+      drop-shadow(0 14px 40px rgba(0, 0, 0, 0.55));
+    animation: ik-group-breathe 7s ease-in-out infinite;
+  }
+  .ik-group-fade {
+    display: none;
+  }
+  .ik-group-glow {
+    position: absolute;
+    inset: -10%;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 30% 40%, rgba(168, 85, 247, 0.18) 0%, transparent 45%),
+      radial-gradient(circle at 70% 60%, rgba(34, 211, 238, 0.16) 0%, transparent 45%),
+      radial-gradient(circle at 50% 30%, rgba(244, 114, 182, 0.14) 0%, transparent 50%);
+    filter: blur(50px);
+    z-index: -1;
+    animation: ik-glow-shift 12s ease-in-out infinite;
+  }
+  .ik-group-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
+  }
+  .ik-particle {
+    position: absolute;
+    top: var(--y);
+    left: var(--x);
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 8px #fff, 0 0 16px var(--ik-accent);
+    opacity: 0;
+    animation: ik-particle-rise 5s var(--d) ease-in-out infinite;
+  }
+  @keyframes ik-group-breathe {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 1; transform: scale(1.012); }
+  }
+  @keyframes ik-glow-shift {
+    0%, 100% { transform: translate(0,0); }
+    33%      { transform: translate(20px,-15px); }
+    66%      { transform: translate(-20px,10px); }
+  }
+  @keyframes ik-title-pulse {
+    0%, 100% {
+      text-shadow: 0 0 18px rgba(255,255,255,0.45), 0 0 40px var(--ik-accent);
+    }
+    50% {
+      text-shadow: 0 0 28px rgba(255,255,255,0.7), 0 0 70px var(--ik-accent);
+    }
+  }
+  @keyframes ik-particle-rise {
+    0%   { opacity: 0; transform: translateY(0) scale(0.6); }
+    20%  { opacity: 1; }
+    80%  { opacity: 0.8; }
+    100% { opacity: 0; transform: translateY(-60px) scale(1.2); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ik-group-photo, .ik-group-glow, .ik-group-title, .ik-particle {
+      animation: none;
+    }
+  }
+</style>

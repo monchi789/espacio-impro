@@ -1,0 +1,17 @@
+---
+import DashboardLayout from '../../../components/dashboard/DashboardLayout.astro'
+import AuthGuard from '../../../components/dashboard/AuthGuard.tsx'
+import FechaDetail from '../../../components/dashboard/FechaDetail.tsx'
+
+export function getStaticPaths() {
+  return [1, 2, 3, 4].map((n) => ({ params: { fecha: String(n) } }))
+}
+
+const { fecha } = Astro.params
+const fechaNumber = Number(fecha)
+---
+<DashboardLayout title={`Fecha ${fecha} — Impronakuy 2026`}>
+  <AuthGuard client:load>
+    <FechaDetail client:load fechaNumber={fechaNumber} />
+  </AuthGuard>
+</DashboardLayout>

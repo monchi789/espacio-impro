@@ -1,0 +1,57 @@
+.wrapper {
+  background: var(--db-bg);
+  border: 1px solid var(--db-border);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 0.75rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.team {
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+  width: 9rem;
+}
+.teamRight {
+  text-align: right;
+}
+
+.bar {
+  flex: 1;
+  height: 14px;
+  background: var(--db-surface-2);
+  border-radius: 999px;
+  overflow: hidden;
+  display: flex;
+}
+
+.fillA,
+.fillB {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.counts {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--db-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.banner {
+  margin-top: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(74, 222, 128, 0.15);
+  color: var(--db-success);
+  font-size: 0.85rem;
+  text-align: center;
+}

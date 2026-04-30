@@ -1,0 +1,20 @@
+---
+import ImpronakuyLayout from '../../components/impronakuy/ImpronakuyLayout.astro'
+import HeroBanner from '../../components/impronakuy/HeroBanner.tsx'
+import VotingPanel from '../../components/impronakuy/VotingPanel.tsx'
+import MvpVotingPanel from '../../components/impronakuy/MvpVotingPanel.tsx'
+import FocusGate from '../../components/impronakuy/FocusGate.tsx'
+import TeamSection from '../../components/impronakuy/TeamSection.astro'
+import GroupPhoto from '../../components/impronakuy/GroupPhoto.astro'
+import { IK_TEAMS } from '../../data/impronakuy-teams'
+---
+<ImpronakuyLayout>
+  <FocusGate client:load />
+  <main>
+    <HeroBanner client:load teams={IK_TEAMS} />
+    <div class="ik-focus-keep"><VotingPanel client:load /></div>
+    <div class="ik-focus-keep"><MvpVotingPanel client:load /></div>
+    <TeamSection />
+    <GroupPhoto />
+  </main>
+</ImpronakuyLayout>

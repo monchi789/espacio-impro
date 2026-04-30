@@ -1,0 +1,291 @@
+.panel {
+  max-width: 1100px;
+  margin: 0 auto 4rem;
+  padding: 2rem 1.5rem;
+  background: var(--ik-bg-dark);
+  border: 1px solid var(--ik-border);
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(129, 140, 248, 0.25);
+  animation: ik-fade-in 0.5s ease;
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+.roundLabel {
+  font-family: 'IK-Norwester', 'Bebas Neue', 'IK-Lovelo', sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  color: #fff;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 14px rgba(255,255,255,0.4);
+}
+.statusText {
+  font-family: 'IK-Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  color: var(--ik-text-muted);
+  text-transform: uppercase;
+}
+.score {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0 1.5rem;
+}
+.scoreNumber {
+  font-family: 'IK-Norwester', 'Bebas Neue', 'IK-Lovelo', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 6vw, 4rem);
+  text-align: center;
+  text-shadow: 0 0 18px currentColor;
+}
+.scoreSep {
+  font-family: 'IK-Norwester', 'Bebas Neue', 'IK-Lovelo', sans-serif;
+  font-size: 1.5rem;
+  color: var(--ik-text-muted);
+}
+.voteRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+.teamCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: left;
+  padding: 0;
+  border: 2px solid var(--btn-color, var(--ik-border));
+  border-radius: 18px;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--btn-color, #fff) 8%, transparent) 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  color: #fff;
+  font-family: 'IK-Manrope', sans-serif;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 0 22px color-mix(in srgb, var(--btn-color, #fff) 30%, transparent);
+}
+.teamCard:hover:not(:disabled) {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 0 40px color-mix(in srgb, var(--btn-color, #fff) 65%, transparent);
+}
+.teamCard:disabled {
+  cursor: not-allowed;
+}
+.teamCard.voted {
+  border-color: var(--btn-color);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--btn-color) 35%, transparent),
+    0 0 50px color-mix(in srgb, var(--btn-color) 80%, transparent);
+}
+.teamPhotoWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #111;
+}
+.teamPhoto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.teamCard:hover:not(:disabled) .teamPhoto {
+  transform: scale(1.06);
+}
+.teamPhotoOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.75) 100%);
+  pointer-events: none;
+}
+.teamCardBody {
+  padding: 1rem 1.1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.teamName {
+  margin: 0;
+  font-family: 'IK-Norwester', 'Bebas Neue', 'IK-Lovelo', sans-serif;
+  font-size: clamp(1.1rem, 2.4vw, 1.6rem);
+  letter-spacing: 0.05em;
+  color: var(--btn-color);
+  text-shadow: 0 0 14px color-mix(in srgb, var(--btn-color) 60%, transparent);
+}
+.teamCta {
+  align-self: flex-start;
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  background: var(--btn-color);
+  color: #0b0820;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.teamCard.voted .teamCta {
+  background: #fff;
+  color: var(--btn-color);
+}
+.teamCard:disabled .teamCta {
+  opacity: 0.6;
+}
+.voteBtn {
+  /* legacy fallback — unused */
+  display: none;
+}
+.progressBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
+.tallyBlock {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.tallyCell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 14px;
+  border: 2px solid var(--bar-color);
+  background: color-mix(in srgb, var(--bar-color) 10%, transparent);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--bar-color) 40%, transparent);
+}
+.tallyVotes {
+  font-family: 'IK-Norwester', 'Bebas Neue', sans-serif;
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  line-height: 1;
+  color: var(--bar-color);
+  text-shadow: 0 0 18px color-mix(in srgb, var(--bar-color) 70%, transparent);
+}
+.tallyLabel {
+  margin-top: 0.4rem;
+  font-family: 'IK-Manrope', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+}
+.progressRow {
+  display: grid;
+  grid-template-columns: 1fr 60px;
+  gap: 0.6rem;
+  align-items: center;
+}
+.progressTrack {
+  height: 12px;
+  border-radius: 999px;
+  background: var(--ik-bg-card);
+  overflow: hidden;
+}
+.progressFill {
+  height: 100%;
+  background: var(--bar-color);
+  box-shadow: 0 0 10px var(--bar-color);
+  transition: width 0.5s ease;
+}
+.progressLabel {
+  font-family: 'IK-Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--bar-color);
+  text-align: right;
+}
+.message {
+  text-align: center;
+  font-family: 'IK-Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--ik-text);
+  margin-top: 1rem;
+}
+.winnerBanner {
+  text-align: center;
+  font-family: 'IK-Norwester', 'Bebas Neue', 'IK-Lovelo', sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.4rem, 4vw, 2.4rem);
+  letter-spacing: 0.1em;
+  margin-top: 1rem;
+  color: var(--winner-color, #fff);
+  text-shadow: 0 0 24px var(--winner-color, #fff);
+  animation: ik-pulse-neon 1.4s ease-in-out infinite;
+}
+@media (max-width: 640px) {
+  .voteRow { grid-template-columns: 1fr; }
+}
+
+.roundsHistory {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--ik-border);
+}
+.historyTitle {
+  font-family: 'IK-Manrope', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ik-muted);
+  margin: 0 0 0.6rem;
+}
+.historyList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.historyRow {
+  display: grid;
+  grid-template-columns: auto 1fr auto 1fr auto;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.45rem 0.6rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  font-family: 'IK-Manrope', sans-serif;
+  font-size: 0.9rem;
+}
+.historyLabel {
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+}
+.historyVotes {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  text-align: center;
+}
+.historyVotes.historyWin {
+  font-size: 1.05rem;
+  text-shadow: 0 0 8px currentColor;
+}
+.historySep {
+  color: var(--ik-muted);
+}
+.historyResult {
+  font-size: 0.75rem;
+  color: var(--ik-muted);
+  text-align: right;
+}

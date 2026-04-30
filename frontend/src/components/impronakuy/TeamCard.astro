@@ -1,0 +1,168 @@
+---
+import type { IKTeam } from '../../data/impronakuy-teams'
+import MemberCard from './MemberCard.tsx'
+
+interface Props {
+  team: IKTeam
+}
+const { team } = Astro.props
+---
+<section
+  class="ik-team-card"
+  style={`--team-color: ${team.color}; --team-color-dark: ${team.colorDark};`}
+>
+  <header class="ik-team-header">
+    <span class="ik-team-tag">EQUIPO</span>
+    <h2 class="ik-team-name">{team.name}</h2>
+    <div class="ik-team-divider" aria-hidden="true">
+      <span class="ik-diamond"></span>
+    </div>
+  </header>
+
+  <div class="ik-members-grid">
+    {team.members.map((member, idx) => (
+      <div class="ik-member-wrap" style={`--stagger:${idx * 120}ms`}>
+        <MemberCard client:visible member={member} teamColor={team.color} teamName={team.name} />
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .ik-team-card {
+    position: relative;
+    background: transparent;
+    border: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0 auto 5rem;
+    max-width: 1480px;
+    overflow: visible;
+  }
+  .ik-team-card::before {
+    content: none;
+  }
+  .ik-team-header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0 auto 2.4rem;
+    padding: 1.4rem 2rem 1.6rem;
+    max-width: 920px;
+    border-radius: 14px;
+    background:
+      linear-gradient(
+        90deg,
+        transparent 0%,
+        color-mix(in srgb, var(--team-color) 18%, transparent) 50%,
+        transparent 100%
+      );
+  }
+  .ik-team-header::before,
+  .ik-team-header::after {
+    content: '';
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in srgb, var(--team-color) 80%, transparent),
+      transparent
+    );
+    box-shadow: 0 0 12px var(--team-color);
+  }
+  .ik-team-header::before { top: 0; }
+  .ik-team-header::after { bottom: 0; }
+  .ik-team-tag {
+    font-family: 'IK-Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.55em;
+    color: color-mix(in srgb, var(--team-color) 85%, white);
+    text-transform: uppercase;
+    text-shadow: 0 0 8px color-mix(in srgb, var(--team-color) 60%, transparent);
+    padding-left: 0.55em;
+  }
+  .ik-team-name {
+    font-family: 'IK-Norwester', 'Bebas Neue', 'IK-Lovelo', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 5.4vw, 4rem);
+    letter-spacing: 0.14em;
+    color: var(--team-color);
+    text-shadow:
+      0 0 20px var(--team-color),
+      0 0 50px color-mix(in srgb, var(--team-color) 60%, transparent);
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 1;
+    animation: ik-team-pulse 3s ease-in-out infinite;
+  }
+  .ik-team-divider {
+    position: relative;
+    width: clamp(140px, 26vw, 320px);
+    height: 2px;
+    margin-top: 0.4rem;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--team-color),
+      transparent
+    );
+    box-shadow: 0 0 12px var(--team-color);
+  }
+  .ik-diamond {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: var(--team-color);
+    box-shadow: 0 0 14px var(--team-color);
+  }
+  .ik-members-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+    position: relative;
+    padding: 0 1rem;
+  }
+  .ik-member-wrap {
+    animation: ik-card-rise 0.9s var(--stagger, 0ms) cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  @keyframes ik-team-pulse {
+    0%, 100% {
+      text-shadow:
+        0 0 20px var(--team-color),
+        0 0 50px color-mix(in srgb, var(--team-color) 60%, transparent);
+    }
+    50% {
+      text-shadow:
+        0 0 30px var(--team-color),
+        0 0 80px color-mix(in srgb, var(--team-color) 80%, transparent);
+    }
+  }
+  @keyframes ik-card-rise {
+    from { opacity: 0; transform: translateY(36px) scale(0.92); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @media (max-width: 768px) {
+    .ik-members-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 480px) {
+    .ik-members-grid {
+      grid-template-columns: 1fr;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+  }
+</style>

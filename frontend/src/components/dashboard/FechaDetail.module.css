@@ -1,0 +1,168 @@
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1.5rem;
+}
+
+.headingActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btnDanger {
+  background: #b32a2a;
+  color: #fff;
+  border: 0;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btnDanger:hover:not(:disabled) {
+  background: #d13b3b;
+}
+.btnDanger:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.title {
+  margin: 0;
+}
+
+.back {
+  color: var(--db-muted);
+  font-size: 0.85rem;
+  transition: color 0.15s;
+}
+.back:hover {
+  color: var(--db-text);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 1100px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .heading {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+  }
+  .headingActions {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .btnDanger {
+    flex: 1;
+    padding: 0.65rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  .matchCard {
+    padding: 0.85rem 0.95rem;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.columnTitle {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.8rem;
+  color: var(--db-muted);
+  margin: 0;
+}
+
+.matchCard {
+  background: var(--db-surface);
+  border: 1px solid var(--db-border);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+}
+.matchCardFinished {
+  border-color: var(--db-success);
+}
+
+.matchHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.matchTeams {
+  font-weight: 500;
+}
+
+.matchStatus {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.statusPending {
+  background: rgba(148, 163, 184, 0.15);
+  color: var(--db-muted);
+}
+.statusActive {
+  background: rgba(251, 191, 36, 0.15);
+  color: var(--db-warning);
+}
+.statusFinished {
+  background: rgba(74, 222, 128, 0.15);
+  color: var(--db-success);
+}
+
+.matchWinner {
+  color: var(--db-muted);
+  font-size: 0.85rem;
+}
+
+.btnPrimary {
+  background: var(--db-accent);
+  color: #0f172a;
+  border: none;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  width: 100%;
+}
+.btnPrimary:hover:not(:disabled) {
+  background: var(--db-accent-hover);
+}
+.btnPrimary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.empty,
+.loading,
+.error {
+  color: var(--db-muted);
+  padding: 1rem 0;
+}
+
+.note {
+  color: var(--db-muted);
+  font-size: 0.85rem;
+  font-style: italic;
+}

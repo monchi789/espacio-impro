@@ -1,0 +1,237 @@
+.card {
+  --team-color: #818cf8;
+  --max-stars: 5;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  padding: 14px;
+  border-radius: 22px;
+  animation: ik-card-idle 6s ease-in-out infinite;
+  animation-delay: var(--idle-delay, 0s);
+  transform-style: preserve-3d;
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--team-color) 35%, #0a0f1e) 0%,
+      #0a0f1e 50%,
+      color-mix(in srgb, var(--team-color) 25%, #0a0f1e) 100%
+    );
+  border: 2px solid color-mix(in srgb, var(--team-color) 70%, #fff 0%);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 0 24px color-mix(in srgb, var(--team-color) 35%, transparent),
+    0 18px 40px rgba(0, 0, 0, 0.55);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  overflow: hidden;
+  isolation: isolate;
+}
+@keyframes ik-card-idle {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50%      { transform: translateY(-6px) rotate(0.4deg); }
+}
+.card::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(255, 255, 255, 0.18) 60deg,
+    transparent 120deg,
+    transparent 240deg,
+    rgba(255, 255, 255, 0.12) 300deg,
+    transparent 360deg
+  );
+  animation: ik-holo 8s linear infinite;
+  z-index: -1;
+  opacity: 0.55;
+  pointer-events: none;
+}
+@keyframes ik-holo {
+  to { transform: rotate(1turn); }
+}
+.card:hover {
+  transform: translateY(-10px) scale(1.04) rotate(-0.6deg);
+  animation-play-state: paused;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.18) inset,
+    0 0 50px color-mix(in srgb, var(--team-color) 70%, transparent),
+    0 26px 60px rgba(0, 0, 0, 0.7);
+}
+.card:hover .photo { filter: drop-shadow(0 0 18px var(--team-color)); }
+
+.frame {
+  position: relative;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #050810 0%, #0c1220 100%);
+  border: 1px solid color-mix(in srgb, var(--team-color) 50%, transparent);
+  padding: 8px 8px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  font-family: 'IK-Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.typeBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--team-color) 25%, transparent);
+  color: var(--team-color);
+  border: 1px solid color-mix(in srgb, var(--team-color) 60%, transparent);
+  font-size: 0.65rem;
+}
+.typeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--team-color);
+  box-shadow: 0 0 6px var(--team-color);
+}
+.hp {
+  color: #fff;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 8px var(--team-color);
+}
+
+.photoWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      color-mix(in srgb, var(--team-color) 35%, transparent) 0%,
+      transparent 65%
+    ),
+    linear-gradient(180deg, #0d1426 0%, #060912 100%);
+  border: 1px solid color-mix(in srgb, var(--team-color) 35%, transparent);
+}
+.photoWrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.12) 45%,
+    rgba(255, 255, 255, 0.04) 55%,
+    transparent 70%
+  );
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+.photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 18px var(--team-color));
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.photoBase { opacity: 1; }
+.photoAlt { opacity: 0; }
+.card.alt .photoBase { opacity: 0; }
+.card.alt .photoAlt { opacity: 1; }
+@media (hover: hover) {
+  .card:hover .photoBase { opacity: 0; transform: scale(1.04); }
+  .card:hover .photoAlt { opacity: 1; transform: scale(1.04); }
+}
+
+.nameBanner {
+  position: relative;
+  margin: 4px -8px 0;
+  padding: 8px 10px;
+  text-align: center;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      color-mix(in srgb, var(--team-color) 35%, transparent) 50%,
+      transparent 100%
+    );
+  border-top: 1px solid color-mix(in srgb, var(--team-color) 60%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--team-color) 60%, transparent);
+}
+.nameArtistic {
+  margin: 0;
+  font-family: 'IK-Norwester', 'Bebas Neue', 'IK-Lovelo', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.15;
+  letter-spacing: 0.05em;
+  color: #fff;
+  text-shadow: 0 0 10px var(--team-color);
+}
+
+.statsBlock {
+  padding: 10px 4px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.statRow {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  align-items: center;
+  gap: 8px;
+}
+.statLabel {
+  font-family: 'IK-Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--ik-text-muted);
+  text-transform: uppercase;
+}
+.statStars {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+.star {
+  font-size: 0.95rem;
+  line-height: 1;
+  color: #1f2937;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.starOn {
+  color: var(--team-color);
+  text-shadow: 0 0 8px var(--team-color);
+}
+
+.footer {
+  margin-top: 8px;
+  padding: 6px 4px 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'IK-Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  color: var(--ik-text-muted);
+  text-transform: uppercase;
+}
+.footerAccent {
+  color: var(--team-color);
+}

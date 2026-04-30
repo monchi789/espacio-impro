@@ -1,0 +1,168 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: clamp(440px, 80vh, 920px);
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(168, 85, 247, 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 80%, rgba(34, 211, 238, 0.18) 0%, transparent 55%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(2rem, 4vh, 4rem) clamp(1rem, 3vw, 3rem);
+  isolation: isolate;
+}
+
+.starsContainer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.55;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+  animation: ik-twinkle var(--dur, 3s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.title {
+  position: relative;
+  z-index: 2;
+  margin: 0 0 0.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1em;
+  text-align: center;
+  font-family: 'IK-Norwester', 'Bebas Neue', 'IK-Lovelo', sans-serif;
+  font-weight: 900;
+  line-height: 0.9;
+  text-transform: uppercase;
+  animation: ik-fade-in 1.2s ease-out both;
+}
+.titleMain {
+  font-size: clamp(2.6rem, 9vw, 8rem);
+  letter-spacing: 0.04em;
+  background: linear-gradient(90deg, #f472b6 0%, #a855f7 35%, #22d3ee 70%, #facc15 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 28px rgba(168, 85, 247, 0.55));
+  animation: ik-shine 6s linear infinite;
+}
+.titleYear {
+  font-size: clamp(1rem, 2.4vw, 2rem);
+  letter-spacing: 0.6em;
+  color: #fff;
+  opacity: 0.85;
+  padding-left: 0.6em;
+}
+
+.subtitle {
+  position: relative;
+  z-index: 2;
+  font-family: 'IK-Manrope', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.45em;
+  font-size: clamp(0.7rem, 1vw, 0.95rem);
+  color: var(--ik-text-muted);
+  text-transform: uppercase;
+  margin: 0 0 clamp(1.5rem, 4vh, 3rem);
+  text-align: center;
+  animation: ik-fade-in 1.4s 0.3s ease-out both;
+}
+
+.matchup {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: clamp(0.2rem, 0.6vw, 0.6rem);
+  width: 100%;
+  max-width: 1800px;
+  animation: ik-fade-in 1.6s 0.5s ease-out both;
+}
+
+.teamSlot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.teamPhotoWrap {
+  width: 100%;
+  height: clamp(240px, 65vh, 720px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.teamPhoto {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 30px var(--team-color)) drop-shadow(0 0 60px var(--team-color));
+  animation: ik-float 5s ease-in-out infinite;
+}
+.teamLabel {
+  font-family: 'IK-Norwester', 'Bebas Neue', 'IK-Lovelo', sans-serif;
+  font-weight: 700;
+  font-size: clamp(0.85rem, 1.8vw, 1.6rem);
+  color: var(--team-color);
+  text-shadow: 0 0 18px var(--team-color), 0 0 36px var(--team-color);
+  text-align: center;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.vs {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(44px, 5.5vw, 90px);
+  height: clamp(44px, 5.5vw, 90px);
+  font-family: 'IK-Norwester', 'Bebas Neue', 'IK-Lovelo', sans-serif;
+  font-weight: 900;
+  font-size: clamp(0.95rem, 2vw, 1.8rem);
+  line-height: 1;
+  letter-spacing: 0;
+  white-space: nowrap;
+  color: #fff;
+  padding: 0;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, rgba(0, 0, 0, 0.75) 70%);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4), inset 0 0 14px rgba(168, 85, 247, 0.4);
+  animation: ik-electric 2s ease-in-out infinite;
+}
+
+.bigMode .teamPhotoWrap {
+  height: clamp(260px, 75vh, 820px);
+}
+
+@keyframes ik-shine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@media (max-width: 640px) {
+  .hero { min-height: 70vh; }
+  .matchup { gap: 0.5rem; }
+  .teamPhotoWrap { height: clamp(120px, 28vh, 220px); }
+}

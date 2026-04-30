@@ -1,0 +1,90 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  max-width: 800px;
+}
+
+.card {
+  background: var(--db-surface);
+  border: 1px solid var(--db-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.15s;
+  display: block;
+}
+
+.card:hover {
+  border-color: var(--db-accent);
+  transform: translateY(-2px);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
+.number {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 2.5rem;
+  color: var(--db-accent);
+  line-height: 1;
+}
+
+.label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.date {
+  color: var(--db-muted);
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.matches {
+  color: var(--db-muted);
+  font-size: 0.85rem;
+}
+
+.badge {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.badgeUpcoming {
+  background: rgba(148, 163, 184, 0.15);
+  color: var(--db-muted);
+}
+.badgeActive {
+  background: rgba(251, 191, 36, 0.15);
+  color: var(--db-warning);
+}
+.badgeDone {
+  background: rgba(74, 222, 128, 0.15);
+  color: var(--db-success);
+}
+
+.heading {
+  margin-bottom: 1.5rem;
+}
+
+.loading,
+.error {
+  color: var(--db-muted);
+  padding: 2rem 0;
+}

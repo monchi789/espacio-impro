@@ -1,0 +1,78 @@
+.box {
+  background: var(--db-surface);
+  border: 1px solid var(--db-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.statusBadge {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  background: rgba(251, 191, 36, 0.15);
+  color: var(--db-warning);
+}
+
+.btnDanger {
+  margin-top: 1rem;
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--db-danger);
+  color: var(--db-danger);
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+.btnDanger:hover:not(:disabled) {
+  background: rgba(248, 113, 113, 0.1);
+}
+.btnDanger:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.banner {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background: rgba(74, 222, 128, 0.15);
+  color: var(--db-success);
+  text-align: center;
+  font-weight: 500;
+}
+
+.error {
+  color: var(--db-danger);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .box {
+    padding: 1rem;
+  }
+  .header {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .btnDanger {
+    padding: 0.85rem 1rem;
+  }
+}

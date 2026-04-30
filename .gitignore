@@ -12,6 +12,7 @@ backend/build/
 backend/*.db
 backend/data/
 backend/.poetry-lock
+backend/env/
 
 # Frontend
 frontend/node_modules/

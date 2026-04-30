@@ -1,0 +1,298 @@
+---
+interface Props {
+  title?: string
+}
+const { title = 'Impronakuy 2026 — Espacio Impro' } = Astro.props
+---
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content="Torneo de catch de improvisación - Espacio Impro 2026" />
+    <link rel="preload" href="/fonts/Lovelo-Black.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Manrope-Bold.woff2" as="font" type="font/woff2" crossorigin />
+  </head>
+  <body class="impronakuy-page">
+    <div class="ik-cosmos" aria-hidden="true">
+      <div class="ik-stars-layer ik-stars-far"></div>
+      <div class="ik-stars-layer ik-stars-mid"></div>
+      <div class="ik-stars-layer ik-stars-near"></div>
+      <div class="ik-orb ik-orb-1"></div>
+      <div class="ik-orb ik-orb-2"></div>
+      <div class="ik-orb ik-orb-3"></div>
+      <div class="ik-shooting" style="--top:18%; --delay:0s; --dur:7s;"></div>
+      <div class="ik-shooting" style="--top:42%; --delay:3.5s; --dur:9s;"></div>
+      <div class="ik-shooting" style="--top:68%; --delay:6s; --dur:8s;"></div>
+    </div>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  body.ik-focus main > *:not(.ik-focus-keep) {
+    display: none !important;
+  }
+  body.ik-focus .ik-cosmos {
+    opacity: 0.4;
+  }
+
+  @font-face {
+    font-family: 'IK-Norwester';
+    src: url('/fonts/BebasNeue-Regular.woff2') format('woff2');
+    font-weight: 400 900;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'IK-Lovelo';
+    src: url('/fonts/Lovelo-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'IK-Lovelo';
+    src: url('/fonts/Lovelo-LineBold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'IK-Manrope';
+    src: url('/fonts/Manrope-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'IK-Manrope';
+    src: url('/fonts/Manrope-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'IK-Manrope';
+    src: url('/fonts/Manrope-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'IK-Inter';
+    src: url('/fonts/Inter_18pt-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'IK-Inter';
+    src: url('/fonts/Inter_18pt-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+  }
+
+  body.impronakuy-page {
+    --ik-bg-deep: #030712;
+    --ik-bg-dark: #0a0f1e;
+    --ik-bg-card: #111827;
+    --ik-text: #e2e8f0;
+    --ik-text-muted: #94a3b8;
+    --ik-border: #1e293b;
+    --ik-accent: #818cf8;
+
+    --ik-culiprincess: #e879f9;
+    --ik-culiprincess-dark: #a21caf;
+    --ik-tetris: #4ade80;
+    --ik-tetris-dark: #15803d;
+    --ik-cercano: #fb923c;
+    --ik-cercano-dark: #c2410c;
+    --ik-mal: #f87171;
+    --ik-mal-dark: #b91c1c;
+    --ik-fachonistas: #fbbf24;
+    --ik-fachonistas-dark: #b45309;
+
+    margin: 0;
+    padding: 0;
+    background-color: var(--ik-bg-deep);
+    color: var(--ik-text);
+    font-family: 'IK-Manrope', 'Manrope', system-ui, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body.impronakuy-page * {
+    box-sizing: border-box;
+  }
+
+  body.impronakuy-page main {
+    display: block;
+  }
+
+  body.impronakuy-page a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  body.impronakuy-page h1,
+  body.impronakuy-page h2,
+  body.impronakuy-page h3 {
+    margin: 0;
+    font-family: 'IK-Norwester', 'Bebas Neue', 'IK-Lovelo', system-ui, sans-serif;
+    letter-spacing: 0.04em;
+  }
+
+  body.impronakuy-page::-webkit-scrollbar {
+    width: 10px;
+  }
+  body.impronakuy-page::-webkit-scrollbar-track {
+    background: var(--ik-bg-deep);
+  }
+  body.impronakuy-page::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--ik-accent), #6366f1);
+    border-radius: 8px;
+  }
+
+  @keyframes ik-twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(0.8); }
+    50%      { opacity: 1;   transform: scale(1.2); }
+  }
+  @keyframes ik-float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-12px); }
+  }
+  @keyframes ik-pulse-neon {
+    0%, 100% { opacity: 0.7; }
+    50%      { opacity: 1; }
+  }
+  @keyframes ik-electric {
+    0%   { box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px var(--ik-accent); }
+    50%  { box-shadow: 0 0 20px #fff, 0 0 40px var(--ik-accent), 0 0 60px var(--ik-accent); }
+    100% { box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px var(--ik-accent); }
+  }
+  @keyframes ik-fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes ik-drift {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-200px, -120px, 0); }
+  }
+  @keyframes ik-orb-float {
+    0%, 100% { transform: translate3d(0,0,0) scale(1); }
+    50%      { transform: translate3d(40px,-30px,0) scale(1.15); }
+  }
+
+  body.impronakuy-page .ik-cosmos {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  body.impronakuy-page .ik-cosmos > * { position: absolute; }
+  body.impronakuy-page main,
+  body.impronakuy-page nav,
+  body.impronakuy-page section,
+  body.impronakuy-page footer { position: relative; z-index: 1; }
+
+  body.impronakuy-page .ik-stars-layer {
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    background-repeat: repeat;
+    will-change: transform;
+  }
+  body.impronakuy-page .ik-stars-far {
+    background-image:
+      radial-gradient(1px 1px at 12% 18%, #fff, transparent 60%),
+      radial-gradient(1px 1px at 27% 73%, rgba(255,255,255,0.85), transparent 60%),
+      radial-gradient(1px 1px at 41% 31%, #fff, transparent 60%),
+      radial-gradient(1px 1px at 58% 84%, rgba(255,255,255,0.7), transparent 60%),
+      radial-gradient(1px 1px at 69% 12%, #fff, transparent 60%),
+      radial-gradient(1px 1px at 83% 47%, rgba(255,255,255,0.8), transparent 60%),
+      radial-gradient(1px 1px at 92% 65%, #fff, transparent 60%),
+      radial-gradient(1px 1px at 6% 92%, rgba(255,255,255,0.7), transparent 60%);
+    background-size: 600px 600px;
+    opacity: 0.6;
+    animation: ik-drift 180s linear infinite;
+  }
+  body.impronakuy-page .ik-stars-mid {
+    background-image:
+      radial-gradient(1.5px 1.5px at 22% 38%, #fff, transparent 60%),
+      radial-gradient(1.5px 1.5px at 47% 17%, #c4b5fd, transparent 60%),
+      radial-gradient(1.5px 1.5px at 65% 71%, #fff, transparent 60%),
+      radial-gradient(1.5px 1.5px at 81% 22%, #67e8f9, transparent 60%),
+      radial-gradient(1.5px 1.5px at 9% 56%, #fff, transparent 60%);
+    background-size: 480px 480px;
+    opacity: 0.75;
+    animation: ik-drift 110s linear infinite, ik-twinkle 6s ease-in-out infinite;
+  }
+  body.impronakuy-page .ik-stars-near {
+    background-image:
+      radial-gradient(2px 2px at 33% 44%, #fff, transparent 70%),
+      radial-gradient(2px 2px at 75% 15%, #fde68a, transparent 70%),
+      radial-gradient(2px 2px at 18% 81%, #f9a8d4, transparent 70%),
+      radial-gradient(2.5px 2.5px at 88% 78%, #fff, transparent 70%);
+    background-size: 380px 380px;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 4px rgba(255,255,255,0.6));
+    animation: ik-drift 70s linear infinite;
+  }
+
+  body.impronakuy-page .ik-orb {
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.35;
+    mix-blend-mode: screen;
+    animation: ik-orb-float 18s ease-in-out infinite;
+  }
+  body.impronakuy-page .ik-orb-1 {
+    background: radial-gradient(circle, #a855f7 0%, transparent 70%);
+    top: -10%; left: -8%;
+  }
+  body.impronakuy-page .ik-orb-2 {
+    background: radial-gradient(circle, #22d3ee 0%, transparent 70%);
+    top: 40%; right: -10%;
+    animation-delay: -6s;
+  }
+  body.impronakuy-page .ik-orb-3 {
+    background: radial-gradient(circle, #f472b6 0%, transparent 70%);
+    bottom: -12%; left: 30%;
+    animation-delay: -12s;
+  }
+
+  body.impronakuy-page .ik-shooting {
+    position: absolute;
+    top: var(--top, 30%);
+    left: -15%;
+    width: 140px;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.85) 60%,
+      #fff 100%
+    );
+    border-radius: 2px;
+    filter: drop-shadow(0 0 6px #fff) drop-shadow(0 0 14px var(--ik-accent));
+    opacity: 0;
+    animation: ik-shoot var(--dur, 8s) var(--delay, 0s) ease-in infinite;
+  }
+  @keyframes ik-shoot {
+    0%   { transform: translate3d(0, 0, 0) rotate(15deg); opacity: 0; }
+    8%   { opacity: 1; }
+    35%  { opacity: 1; }
+    55%  { transform: translate3d(130vw, 35vh, 0) rotate(15deg); opacity: 0; }
+    100% { opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    body.impronakuy-page .ik-stars-layer,
+    body.impronakuy-page .ik-orb { animation: none; }
+  }
+
+  body.impronakuy-page .ik-text-glow-white {
+    text-shadow: 0 0 10px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.25);
+  }
+  body.impronakuy-page .ik-text-glow-accent {
+    text-shadow: 0 0 20px var(--ik-accent);
+  }
+</style>

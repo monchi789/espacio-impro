@@ -1,0 +1,35 @@
+---
+import { IK_TEAMS } from '../../data/impronakuy-teams'
+import TeamCard from './TeamCard.astro'
+---
+<section id="equipos" class="ik-teams-section">
+  <h2 class="ik-section-title">LOS EQUIPOS</h2>
+  <p class="ik-section-sub">5 equipos. 15 personajes. Una sola arena.</p>
+  {IK_TEAMS.map((team) => <TeamCard team={team} />)}
+</section>
+
+<style>
+  .ik-teams-section {
+    padding: 4rem 1.25rem 2rem;
+  }
+  .ik-section-title {
+    font-family: 'IK-Norwester', 'Bebas Neue', 'IK-Lovelo', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    letter-spacing: 0.18em;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 0 18px rgba(255,255,255,0.5), 0 0 50px var(--ik-accent);
+    margin-bottom: 0.5rem;
+  }
+  .ik-section-sub {
+    text-align: center;
+    color: var(--ik-text-muted);
+    font-family: 'IK-Manrope', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    margin: 0 0 2.5rem;
+  }
+</style>

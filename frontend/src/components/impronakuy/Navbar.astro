@@ -1,0 +1,104 @@
+---
+interface Props {
+  isLive?: boolean
+  hideBackLink?: boolean
+  backHref?: string
+  backLabel?: string
+}
+const {
+  isLive = false,
+  hideBackLink = false,
+  backHref = '/',
+  backLabel = 'Espacio Impro',
+} = Astro.props
+---
+<nav class="ik-navbar">
+  {hideBackLink ? (
+    <span class="ik-back-spacer" />
+  ) : (
+    <a href={backHref} class="ik-back-link" aria-label={`Volver a ${backLabel}`}>
+      <span class="ik-back-arrow">←</span>
+      <span class="ik-back-text">{backLabel}</span>
+    </a>
+  )}
+  <span class="ik-back-spacer" />
+  {isLive ? (
+    <span class="ik-live-badge"><span class="ik-live-dot" />EN VIVO</span>
+  ) : (
+    <span class="ik-back-spacer" />
+  )}
+</nav>
+
+<style>
+  .ik-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(3, 7, 18, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--ik-border);
+  }
+  .ik-back-spacer {
+    display: inline-block;
+    min-width: 1px;
+  }
+  .ik-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'IK-Manrope', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--ik-text-muted);
+    transition: color 0.2s ease;
+  }
+  .ik-back-link:hover {
+    color: var(--ik-text);
+  }
+  .ik-back-arrow {
+    font-size: 1.1rem;
+  }
+  .ik-logo {
+    font-family: 'IK-Norwester', 'Bebas Neue', 'IK-Lovelo', sans-serif;
+    font-weight: 900;
+    font-size: 1.4rem;
+    letter-spacing: 0.12em;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255,255,255,0.45), 0 0 30px var(--ik-accent);
+  }
+  .ik-year {
+    color: var(--ik-accent);
+    margin-left: 0.25rem;
+  }
+  .ik-live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.7rem;
+    background: #b91c1c;
+    color: #fff;
+    font-family: 'IK-Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    border-radius: 999px;
+    box-shadow: 0 0 16px rgba(248, 113, 113, 0.6);
+  }
+  .ik-live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #fff;
+    animation: ik-pulse-neon 1.2s ease-in-out infinite;
+  }
+  @media (max-width: 640px) {
+    .ik-back-text { display: none; }
+    .ik-logo { font-size: 1.1rem; }
+  }
+</style>
