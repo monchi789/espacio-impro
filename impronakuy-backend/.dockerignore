@@ -1,0 +1,37 @@
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Entorno virtual local
+env/
+venv/
+.venv/
+
+# Datos locales (NO copiar la BD al build)
+data/
+*.db
+*.sqlite
+*.sqlite3
+
+# Archivos de entorno
+.env
+.env.*
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+
+# Misc
+*.md
+scripts/
+Dockerfile
+.dockerignore
