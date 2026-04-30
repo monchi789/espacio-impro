@@ -1,15 +1,19 @@
 name: Deploy to VPS (espacio-impro)
 
 on:
-  push:
+  workflow_run:
+    workflows: ["Build and Push Images (espacio-impro)"]
+    types: [completed]
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
 
     steps:
-      - name: Deploy to VPS
+      - name: Deploy to VPS (pull pre-built images)
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.VPS_HOST }}
@@ -19,29 +23,24 @@ jobs:
           script: |
             set -e
 
+            COMPOSE_FILE=podman-compose.prod.yml
+
             echo "🔄 Entrando al directorio del proyecto"
             cd ~/espacio-impro
 
-            echo "📥 Haciendo pull de la rama main"
+            echo "📥 Haciendo pull de la rama main (solo manifests/compose)"
             git pull origin main --no-rebase
 
-            echo "🧹 Limpiando imágenes antiguas"
-            podman images --format "{{.Repository}} {{.ID}} {{.CreatedAt}}" | grep espacio-impro \
-              | sort -rk3 | tail -n +2 | awk '{print $2}' | xargs -r podman rmi -f
-
-            echo "🧹 Limpiando imágenes dangling (<none>)"
-            podman images -f "dangling=true" -q | xargs -r podman rmi -f
+            echo "⬇️  Pull de imágenes públicas desde GHCR"
+            podman-compose -f "$COMPOSE_FILE" pull
 
             echo "🛑 Deteniendo servicios anteriores"
-            podman-compose stop || true
+            podman-compose -f "$COMPOSE_FILE" down --remove-orphans || true
 
-            echo "🗑️ Eliminando contenedores anteriores"
-            podman-compose down || true
+            echo "🚀 Levantando servicios con imágenes nuevas"
+            podman-compose -f "$COMPOSE_FILE" up -d --force-recreate --remove-orphans
 
-            echo "⚙️ Construyendo imágenes actualizadas"
-            podman-compose build
-
-            echo "🚀 Levantando servicios con recreación forzada"
-            podman-compose up -d --force-recreate --remove-orphans
+            echo "🧹 Limpiando imágenes dangling (<none>)"
+            podman images -f "dangling=true" -q | xargs -r podman rmi -f || true
 
             echo "✅ Despliegue finalizado correctamente"
